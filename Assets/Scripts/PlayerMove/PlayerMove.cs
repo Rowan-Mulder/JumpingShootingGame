@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
 
     int jumpState = 0;
     // 0 == Jump button has been released and player may now jump.
-    // 1 == Currently in a jump, haven't landed yet.
+    // 1 == Currently in a jump, haven't landed nor released jump-button yet.
     // 2 == When autojumping is off, this state will prevent you from jumping until you release the jump button.
 
     bool isGrounded;
@@ -122,7 +122,7 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            transformedMove += wallJumpVelocity;
+            transformedMove += wallJumpVelocity / 2;
         }
 
         // Sprinting/Walking
@@ -184,7 +184,7 @@ public class PlayerMove : MonoBehaviour
         if (velocity.y > -velocityLimitY)
             velocity.y += gravity * Time.deltaTime;
 
-        WallJumpDrag();
+        //WallJumpDrag();
 
         // Movements
         controller.Move(transformedMove * speed * Time.deltaTime);
@@ -210,14 +210,14 @@ public class PlayerMove : MonoBehaviour
         if (Physics.Raycast(wallChecker.position, transformedMove, out hit))
         {
             var reflectedDirection = Vector3.Reflect(transformedMove, hit.normal);
-            wallJumpVelocity = reflectedDirection * 2;
+            wallJumpVelocity = reflectedDirection;
         }
     }
 
     private void WallJumpDrag()
     {
-        wallJumpVelocity.x = (wallJumpVelocity.x < 0.001f) ? 0 : wallJumpVelocity.x / 1.0001f;
-        wallJumpVelocity.z = (wallJumpVelocity.z < 0.001f) ? 0 : wallJumpVelocity.z / 1.0001f;
+        wallJumpVelocity.x = (wallJumpVelocity.x < 0.001f) ? 0 : wallJumpVelocity.x / 1.001f;
+        wallJumpVelocity.z = (wallJumpVelocity.z < 0.001f) ? 0 : wallJumpVelocity.z / 1.001f;
     }
 
     private void GUIDebuggingInfo(string[] debugInfo)
