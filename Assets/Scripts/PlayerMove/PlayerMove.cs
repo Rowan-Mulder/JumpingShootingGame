@@ -34,14 +34,16 @@ public class PlayerMove : MonoBehaviour
     public float moveX;
     public float moveZ;
     Vector3 transformedMove;
+    Vector3 respawnPoint;
 
     public float speed;
     public float walkSpeed = 5f;
     public float runningSpeed = 10f;
     public float gravity = -30f;
-    public float jumpHeight = 2f;
+    public float jumpHeight = 3f;
     public float velocityLimitY = 100f;
     public bool autoJumping = false;
+    public int walljumpLimit = 3;
 
     int jumpState = 0;
     // 0 == Jump button has been released and player may now jump.
@@ -54,11 +56,12 @@ public class PlayerMove : MonoBehaviour
     float standingHeight;
     float crouchingHeight;
     int consecutiveWalljumps;
-    int walljumpLimit = 3;
     int totalJumps;
     int totalWallJumps;
     Vector3 velocity;
     Vector3 wallJumpVelocity;
+    //float test1 = 0;
+    //float test2 = 200;
 
 
 
@@ -67,9 +70,10 @@ public class PlayerMove : MonoBehaviour
     {
         standingHeight = playerCamera.position.y;
         crouchingHeight = (standingHeight - 1f);
+        respawnPoint = transform.position;
     }
 
-    // Update is called once per frame
+    // Triggered every frame
     void Update()
     {
         ApplyMovements();
@@ -107,6 +111,20 @@ public class PlayerMove : MonoBehaviour
         moveX = Input.GetAxis("Horizontal");
         moveZ = Input.GetAxis("Vertical");
 
+        /*/ Experimental movement, building up speed
+        if (moveZ > 0 && test1 < test2)
+            test1++;
+        if (moveZ == 0 && test1 > 0)
+            test1 -= 20;
+        if (test1 <= 0)
+            test1 = 0;
+        if (test1 > test2)
+            test1 -= 10;
+
+        // Divide test1 by 100 if using it instead of moveZ in transformedMove
+        // These experimental movements don't have support for moving backwards yet
+        //*/
+
         transformedMove = transform.right * moveX + transform.forward * moveZ;
 
         if (isGrounded)
@@ -122,17 +140,19 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            transformedMove += wallJumpVelocity / 2;
+            transformedMove += wallJumpVelocity / 3;
         }
 
         // Sprinting/Walking
         if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
         {
             speed = runningSpeed;
+            //test2 = 400;
         }
         else
         {
             speed = walkSpeed;
+            //test2 = 200;
         }
 
         // Crouching/Standing
@@ -195,6 +215,10 @@ public class PlayerMove : MonoBehaviour
         //*/ Testing sliding ice movements. Try calculating which direction the player is moving to with only X and Y movements.
         //controller.Move(new Vector3(0.0f, 0f, 0f));
         //*/
+
+        // On pressing 'R', it will teleport you to the original set position
+        if (Input.GetKey(KeyCode.R))
+            transform.position = respawnPoint;
     }
 
     private void Jump()
@@ -210,7 +234,7 @@ public class PlayerMove : MonoBehaviour
         if (Physics.Raycast(wallChecker.position, transformedMove, out hit))
         {
             var reflectedDirection = Vector3.Reflect(transformedMove, hit.normal);
-            wallJumpVelocity = reflectedDirection;
+            wallJumpVelocity = reflectedDirection * 2;
         }
     }
 
