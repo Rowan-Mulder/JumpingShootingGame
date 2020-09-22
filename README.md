@@ -5,9 +5,9 @@
 
 
 Om dit project uit te breiden zijn er een aantal stappen nodig.
-Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - hoge-prioriteit).
-Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - lage-prioriteit).
-Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - optioneel).
+Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do-lijst----hoge-prioriteit).
+Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md##to-do-lijst----lage-prioriteit).
+Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do-lijst----optioneel).
 
 
 
