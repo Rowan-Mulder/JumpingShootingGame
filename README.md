@@ -39,9 +39,11 @@
 - [ ] **Health toevoegen**
 
 - [ ] **Basis AI maken**
-* Ziet de speler binnen een bepaalde radius
-* Gebruik raycasts om te zien of de speler achter een muur zit
-* Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de speler zijn locatie, zonder dat de speler zichtbaar moet wezen.
+- Ziet de speler binnen een bepaalde radius
+  - Gebruik raycasts om te zien of de speler achter een muur zit.
+    -Zo ja, reageert het niet op de speler.
+    -Zo niet, loopt het richting de speler.
+  - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Animaties maken**
 * Idle
