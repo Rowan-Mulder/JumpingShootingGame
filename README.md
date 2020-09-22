@@ -18,35 +18,63 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 * ~~Trappen voor testen van traplopen~~
 * ~~Steile blokken om op te lopen~~
 * ~~Wanden om tegenaan te springen~~
+
 - [x] ~~Basic look script maken~~
 * ~~Om je heen kunnen kijken~~
 * ~~Niet je nek verder kunnen draaien dan realistisch~~
+
 - [x] ~~Basis movement-script maken~~
 * ~~Bewegen~~
 * ~~Rennen~~
 * ~~Walljumping~~
+
 - [x] ~~Movement-script uitbreiden met walljumping~~
 * ~~Reflecteer de velocity tegen normals~~
+
 - [ ] Gun model maken
 * Pistol
+
 - [ ] Schieten implementeren
+
 - [ ] Health toevoegen
+
 - [ ] Basis AI maken
+* Ziet de speler binnen een bepaalde radius
+* Gebruik raycasts om te zien of de speler achter een muur zit
+* Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de speler zijn locatie, zonder dat de speler zichtbaar moet wezen.
+
 - [ ] Animaties maken
+* Idle
+* IdleCrouch
+* Jump
+* Land
+* WalkForwards
+* WalkBackwards
+* WalkLeft
+* WalkRight
+* RunForwards
+* RunBackwards
+* RunLeft
+* RunRight
+
 
 ## TO-DO - lage-prioriteit
 - [ ] Movement-script rennen verbeteren
+
 - [ ] Movement-script sliding toevoegen
+
 
 ## TO-DO - optioneel
 - [ ] Verschillende guns toevoegen
 * Assault rifle
 * Sniper rifle
 * Rocket launcher
+
 - [ ] Grenades toevoegen
 * HE Grenade
 * Smoke bomb
 * Decoy
+
 - [ ] Melee weapons maken
 * Knife
 * Baseball bat
