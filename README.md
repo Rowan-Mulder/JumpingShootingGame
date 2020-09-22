@@ -1,10 +1,15 @@
 Tijdelijke experimentjes met kleuren:
-[#ff0000](test)test
-[#FF0000]Test
-(#FF0000)test
-[#ff0000](test)test[#ff0000]
-[#FF0000]Test[#FF0000]
-(#FF0000)test(#FF0000)
+<p style='color:red'>Dit zou rood moeten wezen</p>
+<p style="color:red">Dit zou rood moeten wezen</p>
+<p style=color:red>Dit zou rood moeten wezen</p>
+[COLOR:RED]Dit zou rood moeten wezen[COLOR:RED]
+<color:red>Dit zou rood moeten wezen</color:red>
+<p class="text-red on white">Dit zou rood moeten wezen</p>
+<p class='text-red on white'>Dit zou rood moeten wezen</p>
+<p class="text-red mb-2">Dit zou rood moeten wezen</p>
+<p class='text-red mb-2'>Dit zou rood moeten wezen</p>
+
+
 
 
 
