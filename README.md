@@ -2,14 +2,14 @@
 *Tijdelijke titel*
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
 
-
+---
 
 Om dit project uit te breiden zijn er een aantal stappen nodig.
 * Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do----hoge-prioriteit).
 * Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do----lage-prioriteit).
 * Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do----optioneel).
 
-
+---
 
 >## TO-DO ## - hoge-prioriteit
 >- [x] ~~Unity opzetten met een developer/test-zone~~
@@ -41,6 +41,6 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 >- [ ] Grenades toevoegen
 >- [ ] Knife maken
 
-
+---
 
 *Tijdens het werken aan scripts noteer ik alle ondervindingen/problemen/oplossingen in comments.*
