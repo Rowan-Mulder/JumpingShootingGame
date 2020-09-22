@@ -2,14 +2,14 @@
 *Tijdelijke titel. Ik wacht nog met de titel tot de basics rond zijn en niet meer zullen veranderen.*
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
 
----
+<br><br><br>---
 
 **Om dit project uit te breiden zijn er een aantal stappen nodig:**
 * Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---hoge-prioriteit).
 * Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---lage-prioriteit).
 * Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---optioneel).
-test<br>test<br>test<br>test<br><br>test<br><br><br>test<br><br><br><br><br><br>test
----
+
+<br><br><br>---
 
 ## TO-DO - hoge-prioriteit
 - [x] ~~**Unity opzetten met een developer/test-zone**~~
@@ -83,6 +83,6 @@ test<br>test<br>test<br>test<br><br>test<br><br><br>test<br><br><br><br><br><br>
 * Katana
 * Rubber chicken
 
----
+<br><br><br>---
 
 *Tijdens het werken aan scripts noteer ik alle ondervindingen/problemen/oplossingen in comments.*
