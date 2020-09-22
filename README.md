@@ -11,7 +11,7 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 
 ---
 
-## TO-DO ## - hoge-prioriteit
+## TO-DO - hoge-prioriteit
 - [x] ~~Unity opzetten met een developer/test-zone~~
 * ~~Vlak veld~~
 * ~~Objecten om op/af te springen~~
@@ -32,11 +32,11 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 - [ ] Basis AI maken
 - [ ] Animaties maken
 
-## TO-DO ## - lage-prioriteit
+## TO-DO - lage-prioriteit
 - [ ] Movement-script rennen verbeteren
 - [ ] Movement-script sliding toevoegen
 
-## TO-DO ## - optioneel
+## TO-DO - optioneel
 - [ ] Verschillende guns toevoegen
 - [ ] Grenades toevoegen
 - [ ] Knife maken
