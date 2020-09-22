@@ -1,3 +1,17 @@
+Tijdelijke experimentjes met kleuren:
+[#ff0000](test)test
+[#FF0000]Test
+(#FF0000)test
+[#ff0000](test)test[#ff0000]
+[#FF0000]Test[#FF0000]
+(#FF0000)test(#FF0000)
+
+
+
+
+
+
+
 # JumpingShootingGame
 *Tijdelijke titel. Ik wacht nog met de titel tot de basics rond zijn en niet meer zullen veranderen.*
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
