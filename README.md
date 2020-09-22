@@ -4,7 +4,14 @@
 
 
 
->## TO-DO lijst ## - prioriteit
+Om dit project uit te breiden zijn er een aantal stappen nodig.
+Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - hoge-prioriteit).
+Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - lage-prioriteit).
+Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#TO-DO lijst - optioneel).
+
+
+
+>## TO-DO lijst ## - hoge-prioriteit
 >- [x] ~~Unity opzetten met een developer/test-zone~~
 >* ~~Vlak veld~~
 >* ~~Objecten om op/af te springen~~
@@ -25,9 +32,11 @@
 >- [ ] Basis AI maken
 >- [ ] Animaties maken
 
->## TO-DO ## - optioneel
+>## TO-DO ## - lage-prioriteit
 >- [ ] Movement-script rennen verbeteren
 >- [ ] Movement-script sliding toevoegen
+
+>## TO-DO ## - optioneel
 >- [ ] Verschillende guns toevoegen
 >- [ ] Grenades toevoegen
 >- [ ] Knife maken
