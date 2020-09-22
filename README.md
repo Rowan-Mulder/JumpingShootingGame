@@ -3,7 +3,7 @@
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
 
 ---
-<span style="color:red">some **This is Red Bold.** text</span>
+<span style="background-color:red">some **This is Red Bold.** text</span>
 
 Om dit project uit te breiden zijn er een aantal stappen nodig.
 * Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---hoge-prioriteit).
@@ -13,38 +13,38 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 ---
 
 ## TO-DO - hoge-prioriteit
-- [x] ~~Unity opzetten met een developer/test-zone~~
+- [x] ~~**Unity opzetten met een developer/test-zone**~~
 * ~~Vlak veld~~
 * ~~Objecten om op/af te springen~~
 * ~~Trappen voor testen van traplopen~~
 * ~~Steile blokken om op te lopen~~
 * ~~Wanden om tegenaan te springen~~
 
-- [x] ~~Basic look script maken~~
+- [x] ~~**Basic look script maken**~~
 * ~~Om je heen kunnen kijken~~
 * ~~Niet je nek verder kunnen draaien dan realistisch~~
 
-- [x] ~~Basis movement-script maken~~
+- [x] ~~**Basis movement-script maken**~~
 * ~~Bewegen~~
 * ~~Rennen~~
 * ~~Walljumping~~
 
-- [x] ~~Movement-script uitbreiden met walljumping~~
+- [x] ~~**Movement-script uitbreiden met walljumping**~~
 * ~~Reflecteer de velocity tegen normals~~
 
-- [ ] Gun model maken
+- [ ] **Gun model maken**
 * Pistol
 
-- [ ] Schieten implementeren
+- [ ] **Schieten implementeren**
 
-- [ ] Health toevoegen
+- [ ] **Health toevoegen**
 
-- [ ] Basis AI maken
+- [ ] **Basis AI maken**
 * Ziet de speler binnen een bepaalde radius
 * Gebruik raycasts om te zien of de speler achter een muur zit
 * Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de speler zijn locatie, zonder dat de speler zichtbaar moet wezen.
 
-- [ ] Animaties maken
+- [ ] **Animaties maken**
 * Idle
 * IdleCrouch
 * Jump
@@ -60,23 +60,23 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 
 
 ## TO-DO - lage-prioriteit
-- [ ] Movement-script rennen verbeteren
+- [ ] **Movement-script rennen verbeteren**
 
-- [ ] Movement-script sliding toevoegen
+- [ ] **Movement-script sliding toevoegen**
 
 
 ## TO-DO - optioneel
-- [ ] Verschillende guns toevoegen
+- [ ] **Verschillende guns toevoegen**
 * Assault rifle
 * Sniper rifle
 * Rocket launcher
 
-- [ ] Grenades toevoegen
+- [ ] **Grenades toevoegen**
 * HE Grenade
 * Smoke bomb
 * Decoy
 
-- [ ] Melee weapons maken
+- [ ] **Melee weapons maken**
 * Knife
 * Baseball bat
 * Katana
