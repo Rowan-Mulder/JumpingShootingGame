@@ -1,3 +1,11 @@
 .colorRed {
-	color: red;
+	color: #F00;
+}
+
+.colorGreen {
+	color: #0F0;
+}
+
+.colorBlue {
+	color: #00F;
 }
