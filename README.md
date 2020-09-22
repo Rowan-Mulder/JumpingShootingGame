@@ -39,7 +39,7 @@
 - [ ] **Health toevoegen**
 
 - [ ] **Basis AI maken**
-- Ziet de speler binnen een bepaalde radius
+- Hoort de speler en ziet de speler binnen een bepaalde radius.
   - Gebruik raycasts om te zien of de speler achter een muur zit.
     -Zo ja, reageert het niet op de speler.
     -Zo niet, loopt het richting de speler.
