@@ -1,6 +1,5 @@
 Tijdelijke experimentjes met kleuren:
-- ![#f03c15] Test `#f03c15` test
-- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
+- ![#f03c15](https://www.example.com/) `#f03c15`
 
 
 
