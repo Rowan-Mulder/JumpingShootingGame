@@ -1,6 +1,6 @@
 # JumpingShootingGame
 *Tijdelijke titel*
-![Screenshot vanuit Unity] (https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
+![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
 
 
 
