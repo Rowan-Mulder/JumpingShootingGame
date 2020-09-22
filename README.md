@@ -8,7 +8,7 @@
 * Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---hoge-prioriteit).
 * Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---lage-prioriteit).
 * Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---optioneel).
-<br>test<br><br>test<br><br>
+test<br>test<br>test<br>test<br><br>test<br><br><br>test<br><br><br><br><br><br>test
 ---
 
 ## TO-DO - hoge-prioriteit
