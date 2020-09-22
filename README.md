@@ -3,6 +3,7 @@
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Assets/Screenshots/Screenshot1.png)
 
 ---
+<span style="color:red">some **This is Red Bold.** text</span>
 
 Om dit project uit te breiden zijn er een aantal stappen nodig.
 * Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---hoge-prioriteit).
