@@ -1,5 +1,5 @@
-># JumpingShootingGame
->*Tijdelijke titel*
+# JumpingShootingGame
+*Tijdelijke titel*
 
 
 
