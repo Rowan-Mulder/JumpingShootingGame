@@ -28,6 +28,7 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 - [x] ~~Movement-script uitbreiden met walljumping~~
 * ~~Reflecteer de velocity tegen normals~~
 - [ ] Gun model maken
+* Pistol
 - [ ] Schieten implementeren
 - [ ] Health toevoegen
 - [ ] Basis AI maken
@@ -40,7 +41,6 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 ## TO-DO - optioneel
 - [ ] Verschillende guns toevoegen
 * Assault rifle
-* Pistol
 * Sniper rifle
 * Rocket launcher
 - [ ] Grenades toevoegen
