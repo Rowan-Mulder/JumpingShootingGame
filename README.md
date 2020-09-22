@@ -1,7 +1,6 @@
 Tijdelijke experimentjes met kleuren:
-<p class="mark">Dit zou rood moeten wezen</p>
-<style>p{color:red;}</style>
-*foo*
+- ![#f03c15] Test `#f03c15` test
+- ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+) `#f03c15`
 
 
 
