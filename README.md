@@ -1,4 +1,4 @@
-<p class="colorRed">TESTJE ROOD</p>
+<p class="colorRed">TESTJE</p>
 
 # JumpingShootingGame
 *Tijdelijke titel. Ik wacht nog met de titel tot de basics rond zijn en niet meer zullen veranderen.*
