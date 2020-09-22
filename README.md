@@ -26,6 +26,7 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 * ~~Rennen~~
 * ~~Walljumping~~
 - [x] ~~Movement-script uitbreiden met walljumping~~
+* ~~Reflecteer de velocity tegen normals~~
 - [ ] Gun model maken
 - [ ] Schieten implementeren
 - [ ] Health toevoegen
@@ -38,8 +39,19 @@ Om dit project uit te breiden zijn er een aantal stappen nodig.
 
 ## TO-DO - optioneel
 - [ ] Verschillende guns toevoegen
+* Assault rifle
+* Pistol
+* Sniper rifle
+* Rocket launcher
 - [ ] Grenades toevoegen
-- [ ] Knife maken
+* HE Grenade
+* Smoke bomb
+* Decoy
+- [ ] Melee weapons maken
+* Knife
+* Baseball bat
+* Katana
+* Rubber chicken
 
 ---
 
