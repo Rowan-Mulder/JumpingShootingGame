@@ -34,9 +34,19 @@
 * ~~Reflecteer de velocity tegen normals~~
 
 - [ ] **Gun model maken**
-* Pistol
+* Pistol object maken
+  - Blender
+    - Model maken
+    - UV-unwrappen en hiervoor een texture maken
+  - Unity
+    - Materials albedo/metallic maken
+    - Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.
 
 - [ ] **Schieten implementeren**
+* Particles activeren van het wapen bij het schieten
+* Decals plaatsen
+  - *Nog uitvogelen hoe dit zou kunnen werken*
+  - Decals limiteren tot een x-aantal
 
 - [ ] **Health toevoegen**
 
@@ -60,6 +70,8 @@
 * RunBackwards
 * RunLeft
 * RunRight
+- ShootGun
+  - *Een aparte animatie voor iedere gun?*
 
 <br><br><br>
 ---
