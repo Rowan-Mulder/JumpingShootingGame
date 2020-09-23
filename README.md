@@ -1,5 +1,5 @@
 # JumpingShootingGame
-*Tijdelijke titel. Ik wacht nog met de titel tot de basics rond zijn en niet meer zullen veranderen.*
+*Tijdelijke titel. Ik wacht nog met de titel tot de basis (MVP) rond is.*
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Github%20bestanden/Screenshots/Screenshot1.png)
 
 <br><br><br>
