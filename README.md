@@ -1,5 +1,5 @@
 # JumpingShootingGame
-*Tijdelijke titel. Ik wacht nog met de titel tot de basics rond zijn en niet meer zullen veranderen.*
+*Tijdelijke titel. Ik wacht nog met de titel tot de basis (MVP) rond is.*
 ![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Github%20bestanden/Screenshots/Screenshot1.png)
 
 <br><br><br>
@@ -34,9 +34,23 @@
 * ~~Reflecteer de velocity tegen normals~~
 
 - [ ] **Gun model maken**
-* Pistol
+* Pistol object maken
+  - Blender
+    - Model maken
+    - UV-unwrappen en hiervoor een texture maken
+  - Unity
+    - Materials albedo/metallic maken
+    - Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.
 
 - [ ] **Schieten implementeren**
+* Particles activeren van het wapen bij het schieten
+* Decals plaatsen
+  - *Nog uitvogelen hoe dit zou kunnen werken*
+  - Decals limiteren tot een x-aantal
+- [ ] **Gerigged character model maken (voor speler + enemy)**
+* Modelen
+* Armarture
+* *Werk niet met textures, maar met solid-colors*
 
 - [ ] **Health toevoegen**
 
@@ -60,6 +74,8 @@
 * RunBackwards
 * RunLeft
 * RunRight
+- ShootGun
+  - *Een aparte animatie voor iedere gun?*
 
 <br><br><br>
 ---
