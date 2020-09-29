@@ -47,6 +47,10 @@
 * Decals plaatsen
   - *Nog uitvogelen hoe dit zou kunnen werken*
   - Decals limiteren tot een x-aantal
+- [ ] **Gerigged character model maken (voor speler + enemy)**
+* Modelen
+* Armarture
+* *Werk niet met textures, maar met solid-colors*
 
 - [ ] **Health toevoegen**
 
