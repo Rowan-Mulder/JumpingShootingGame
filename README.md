@@ -45,12 +45,16 @@
 - [ ] **Schieten implementeren**
 * Particles activeren van het wapen bij het schieten
 * Decals plaatsen
-  - *Nog uitvogelen hoe dit zou kunnen werken*
+  - *Nog uitvogelen hoe dit zou kunnen werken.*
   - Decals limiteren tot een x-aantal
 - [ ] **Gerigged character model maken (voor speler + enemy)**
 * Modelen
 * Armarture
 * *Werk niet met textures, maar met solid-colors*
+
+- [ ] **Look-script nakijken**
+* *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
+  - Gebruik hierbij Time.deltaTime
 
 - [ ] **Health toevoegen**
 
