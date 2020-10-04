@@ -33,14 +33,13 @@
 - [x] ~~**Movement-script uitbreiden met walljumping**~~
 * ~~Reflecteer de velocity tegen normals~~
 
-- [ ] **Gun model maken**
-* Pistol object maken
-  - Blender
-    - Model maken
-    - UV-unwrappen en hiervoor een texture maken
-  - Unity
-    - Materials albedo/metallic maken
-    - Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.
+- [x] ~~**Gun model maken**~~
+~~* Pistol object maken~~
+  - ~~Blender~~
+    ~~- Model maken~~
+  ~~- Unity~~
+    ~~- Materials albedo/metallic maken~~
+    ~~- Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.~~
 
 - [ ] **Schieten implementeren**
 * Particles activeren van het wapen bij het schieten
