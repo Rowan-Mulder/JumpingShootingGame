@@ -34,15 +34,15 @@
 * ~~Reflecteer de velocity tegen normals~~
 
 - [x] ~~**Gun model maken**~~
-~~* Pistol object maken~~
-  - ~~Blender~~
-    ~~- Model maken~~
+* ~~Pistol object maken~~
+  ~~- Blender~~
+    - ~~Model maken~~
   ~~- Unity~~
-    ~~- Materials albedo/metallic maken~~
-    ~~- Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.~~
+    - ~~Materials albedo/metallic maken~~
+    - ~~Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.~~
 
 - [ ] **Schieten implementeren**
-* Particles activeren van het wapen bij het schieten
+* ~~Particles activeren van het wapen bij het schieten~~
 * Decals plaatsen
   - *Nog uitvogelen hoe dit zou kunnen werken.*
   - Decals limiteren tot een x-aantal
