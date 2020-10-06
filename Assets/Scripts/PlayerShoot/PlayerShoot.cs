@@ -38,7 +38,9 @@ public class PlayerShoot : MonoBehaviour
         //Shoots from playerCamera, change to weaponMuzzle for VR
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit))
         {
-            Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
+            GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
+            particle.SetActive(true);
+            Destroy(particle, 60f);
         }
     }
 }
