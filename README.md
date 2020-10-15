@@ -44,9 +44,10 @@
 - [ ] **Schieten implementeren**
 * ~~Particles activeren van het wapen bij het schieten~~
 * ~~Decals plaatsen in de vorm van een pijl (om normal vector te controleren)~~
-  - Maak een decal texture
-  - Decal pijl model vervangen met billboard met decal texture
-  - Decals limiteren tot een x-aantal
+* Maak een decal texture
+* Decal pijl model vervangen met billboard met decal texture
+* Decals limiteren tot een x-aantal
+
 - [ ] **Gerigged character model maken (voor speler + enemy)**
 * ~~Modelen~~
 * ~~Armarture~~
