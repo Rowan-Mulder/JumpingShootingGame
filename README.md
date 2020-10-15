@@ -43,13 +43,17 @@
 
 - [ ] **Schieten implementeren**
 * ~~Particles activeren van het wapen bij het schieten~~
-* Decals plaatsen
-  - *Nog uitvogelen hoe dit zou kunnen werken.*
+* ~~Decals plaatsen in de vorm van een pijl (om normal vector te controleren)~~
+  - Maak een decal texture
+  - Decal pijl model vervangen met billboard met decal texture
   - Decals limiteren tot een x-aantal
 - [ ] **Gerigged character model maken (voor speler + enemy)**
-* Modelen
-* Armarture
-* *Werk niet met textures, maar met solid-colors*
+* ~~Modelen~~
+* ~~Armarture~~
+* ~~Rigging~~
+  - ~~Weight painting optimaliseren~~
+* ~~Materials~~
+* Details toevoegen, op zijn minst in het gezicht.
 
 - [ ] **Look-script nakijken**
 * *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
