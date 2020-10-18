@@ -9,7 +9,8 @@ public class PlayerShoot : MonoBehaviour
     public Transform playerCamera;
     public int ammunition = 100;
     public bool readyToFire = true;
-    public ParticleSystem muzzleFlash;
+    public ParticleSystem muzzleFlashPistolCamera;
+    public ParticleSystem muzzleFlashPistolGlobal;
     public GameObject gunDecal;
 
     // Update is called once per frame
@@ -29,7 +30,8 @@ public class PlayerShoot : MonoBehaviour
 
     void Shoot()
     {
-        muzzleFlash.Play();
+        muzzleFlashPistolCamera.Play();
+        muzzleFlashPistolGlobal.Play();
 
         ammunition--;
 

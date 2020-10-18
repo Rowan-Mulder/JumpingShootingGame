@@ -10,8 +10,10 @@ public class PlayerLook : MonoBehaviour
     public bool mouseInvertY = false;
     public Transform playerCamera;
     public Transform playerNeckbone;
-    public Transform playerLowerArm;
-    public Quaternion playerLowerArmRotation;
+    public Transform playerLowerArmGlobal;
+    public Transform playerUpperArmLocal;
+    private Quaternion playerLowerArmGlobalRotation;
+    private Quaternion playerUpperArmLocalRotation;
     float xRotation = 0f;
     float yRotation = 0f;
 
@@ -20,10 +22,9 @@ public class PlayerLook : MonoBehaviour
     {
         // Lock the cursor in the center of the window
         Cursor.lockState = CursorLockMode.Locked;
-        // Bodge-fix for starting rotation
-        yRotation = 180;
 
-        playerLowerArmRotation = playerLowerArm.localRotation;
+        playerLowerArmGlobalRotation = playerLowerArmGlobal.localRotation;
+        playerUpperArmLocalRotation = playerLowerArmGlobal.localRotation;
     }
 
     // Update is called once per frame
@@ -66,8 +67,11 @@ public class PlayerLook : MonoBehaviour
         // Applies the xRotation to the player's neckbone.
         playerNeckbone.localRotation = Quaternion.Euler(0f, 0f, xRotation);
 
-        // Applies the xRotation to the player's lower arm.
-        playerLowerArm.localRotation = playerLowerArmRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
+        // Applies the xRotation to the player's global lower arm.
+        playerLowerArmGlobal.localRotation = playerLowerArmGlobalRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
+
+        // Applies the xRotation to the player's local lower arm.
+        playerUpperArmLocal.localRotation = Quaternion.Euler(0f + xRotation, 0f, 0f);
 
         // Applies the yRotation to the player object.
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
