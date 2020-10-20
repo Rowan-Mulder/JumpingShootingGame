@@ -8,12 +8,12 @@ public class PlayerLook : MonoBehaviour
     public float mouseSensitivity = 1000f;
     public bool mouseInvertX = false;
     public bool mouseInvertY = false;
-    public Transform playerCamera;
+    public Transform playerFirstPersonCamera;
+    public Transform playerThirdPersonCamera;
     public Transform playerNeckbone;
     public Transform playerLowerArmGlobal;
     public Transform playerUpperArmLocal;
     private Quaternion playerLowerArmGlobalRotation;
-    private Quaternion playerUpperArmLocalRotation;
     float xRotation = 0f;
     float yRotation = 0f;
 
@@ -24,7 +24,6 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerLowerArmGlobalRotation = playerLowerArmGlobal.localRotation;
-        playerUpperArmLocalRotation = playerLowerArmGlobal.localRotation;
     }
 
     // Update is called once per frame
@@ -61,8 +60,11 @@ public class PlayerLook : MonoBehaviour
         // Limits the xRotation from rotating too far.
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // Applies the xRotation to the player's camera.
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // Applies the xRotation to the player's first-person camera.
+        playerFirstPersonCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        // Applies the xRotation to the player's third-person camera.
+        playerThirdPersonCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // Applies the xRotation to the player's neckbone.
         playerNeckbone.localRotation = Quaternion.Euler(0f, 0f, xRotation);
