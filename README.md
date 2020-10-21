@@ -41,24 +41,23 @@
     - ~~Materials albedo/metallic maken~~
     - ~~Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.~~
 
-- [ ] **Schieten implementeren**
+- [x] **Schieten implementeren**
 * ~~Particles activeren van het wapen bij het schieten~~
 * ~~Decals plaatsen in de vorm van een pijl (om normal vector te controleren)~~
-* Maak een decal texture
-* Decal pijl model vervangen met billboard met decal texture
-* Decals limiteren tot een x-aantal
+* ~~Maak een decal texture~~
+* ~~Decal pijl model vervangen met billboard met decal texture~~
 
-- [ ] **Gerigged character model maken (voor speler + enemy)**
+- [x] **Gerigged character model maken (voor speler + enemy)**
 * ~~Modelen~~
 * ~~Armarture~~
 * ~~Rigging~~
   - ~~Weight painting optimaliseren~~
 * ~~Materials~~
-* Details toevoegen, op zijn minst in het gezicht.
 
 - [ ] **Look-script nakijken**
 * *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
-  - Gebruik hierbij Time.deltaTime
+  - ~~Gebruik hierbij Time.deltaTime~~
+    - Time.deltatime is geïmplementeerd, maar werkt nog niet.
 
 - [ ] **Health toevoegen**
 
@@ -70,11 +69,12 @@
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Animaties maken**
+* Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**
 * Idle
 * IdleCrouch
 * Jump
 * Land
-* WalkForwards
+* ~~WalkForwards~~
 * WalkBackwards
 * WalkLeft
 * WalkRight
@@ -90,8 +90,12 @@
 
 ## TO-DO - lage-prioriteit
 - [ ] **Movement-script rennen verbeteren**
+  - Transition van walking naar rennen moet smoother
 
 - [ ] **Movement-script sliding toevoegen**
+  - Sliden van ramps, bouw veel snelheid op.
+
+- [ ] **Decals limiteren tot een x-aantal**
 
 <br><br><br>
 ---
@@ -113,7 +117,9 @@
 * Katana
 * Rubber chicken
 
+- [ ] **Details toevoegen aan de playermodel, op zijn minst in het gezicht.**
+
 <br><br><br>
 ---
 
-*Tijdens het werken aan scripts noteer ik alle ondervindingen/problemen/oplossingen in comments.*
+*Tijdens het werken aan scripts noteer ik hierbinnen alle ondervindingen/problemen/oplossingen in de comments.*
