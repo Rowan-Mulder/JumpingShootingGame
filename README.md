@@ -61,7 +61,8 @@
 
 - [ ] **Health toevoegen**
 
-- [ ] **Basis AI maken**
+- [ ] **Basis AI gebruiken/maken**
+- Gebruik eerst de Unity AI om te kijken of dit voldoende is.
 - Hoort de speler en ziet de speler binnen een bepaalde radius.
   - Gebruik raycasts om te zien of de speler achter een muur zit.
     - Zo ja, reageert het niet op de speler.
@@ -69,8 +70,8 @@
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Animaties maken**
-* Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**
-* Idle
+* ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
+* ~~Idle~~
 * IdleCrouch
 * Jump
 * Land
@@ -78,7 +79,7 @@
 * WalkBackwards
 * WalkLeft
 * WalkRight
-* RunForwards
+* ~~RunForwards~~
 * RunBackwards
 * RunLeft
 * RunRight
