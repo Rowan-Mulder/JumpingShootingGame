@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 
 public class AnimationController : MonoBehaviour
 {
     Animator animator;
+    //Referentie naar alle script objecten om animaties mee te kunnen bepalen
     public string currentState;
 
     // Start is called before the first frame update
