@@ -11,9 +11,11 @@ using UnityEngine.UIElements;
 public class PlayerMove : MonoBehaviour
 {
     /// <summary>
-    /// Players may have issues jumping against walls, where the jumps jitter a bit.
+    /// Players may have issues jumping against walls, where the jumps jitter a bit. See: https://answers.unity.com/questions/1696314/charactercontroller-glitches-if-it-reaches-a-ledge.html
     ///     To fix this:
-    ///         Adjust the CharacterController its "Slope Limit" to 90.
+    ///         Adjust the CharacterController its "Slope Limit" to 90
+    ///         or
+    ///         Set the Step-Offset to 0.
     /// Players may be unable to jump.
     ///     To fix this:
     ///         Check if isGrounded is true.
