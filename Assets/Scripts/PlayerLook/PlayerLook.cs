@@ -73,7 +73,7 @@ public class PlayerLook : MonoBehaviour
         playerLowerArmGlobal.localRotation = playerLowerArmGlobalRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
 
         // Applies the xRotation to the player's local lower arm.
-        playerUpperArmLocal.localRotation = Quaternion.Euler(0f + xRotation, 0f, 0f);
+        //playerUpperArmLocal.localRotation = Quaternion.Euler(0f + xRotation, 0f, 0f);
 
         // Applies the yRotation to the player object.
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
