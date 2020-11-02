@@ -84,7 +84,7 @@ public class PlayerMove : MonoBehaviour
     // Draws some information to the screen for debugging purposes.
     private void OnGUI()
     {
-        /*
+        
         GUIDebuggingInfo(new string[] {
             $"velocity.x: {moveX}",
             $"velocity.y: {velocity.y}",
@@ -102,7 +102,7 @@ public class PlayerMove : MonoBehaviour
             $"totalWallJumps: {totalWallJumps}",
             $"jumpState: {jumpState}"
         });
-        */
+        
     }
 
     void ApplyMovements()
