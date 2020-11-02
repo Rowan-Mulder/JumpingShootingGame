@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class PlayerShoot : MonoBehaviour
 {
+    //Voeg layermask toe voor waar je op kan schieten (zodat je jezelf niet kan schieten en in de lucht een decal instanciate)
+
     public Transform weaponMuzzle;
     public Transform playerCamera;
     public int ammunition = 100;
