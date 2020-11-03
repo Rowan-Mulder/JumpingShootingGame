@@ -54,16 +54,18 @@
   - ~~Weight painting optimaliseren~~
 * ~~Materials~~
 
-- [ ] **Layermask toevoegen voor waar kogels op zullen landen**
-* Maak een nieuwe layer
-  - Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)
-    - Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)
+- [x] **Layermask toevoegen voor waar kogels op zullen landen**
+* ~~Maak een nieuwe layer~~
+  - ~~Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)~~
+    - ~~Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)~~
 
 - [ ] **AnimationController maken**
 * Alle animation calls zelf beheren met een overzichtelijk script
   - Gebruik een Enumerator voor alle constante animatie namen
 
-- [ ] **Health toevoegen**
+- [ ] **Health script maken**
+* Houd bij hoeveel health het object heeft
+* Het object wordt verwijderd bij 0hp of doet speciale handelingen bij uitzonderingen als enemies en players.
 
 - [ ] **Basis AI gebruiken/maken**
 - Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
