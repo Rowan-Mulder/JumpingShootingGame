@@ -57,7 +57,7 @@
 - [ ] **Look-script nakijken**
 * *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
   - ~~Gebruik hierbij Time.deltaTime~~
-    - Time.deltatime is geïmplementeerd, maar werkt nog niet.
+    - Time.deltatime is geïmplementeerd, maar werkt nog niet als verwacht.
 
 - [ ] **Health toevoegen**
 
@@ -68,6 +68,11 @@
     - Zo ja, reageert het niet op de speler.
     - Zo niet, loopt het richting de speler.
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
+
+- [ ] **Layermask toevoegen voor waar kogels op zullen landen**
+* Maak een nieuwe layer
+  - Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)
+    - Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)
 
 - [ ] **Animaties maken**
 * ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
