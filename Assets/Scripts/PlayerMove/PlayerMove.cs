@@ -70,7 +70,7 @@ public class PlayerMove : MonoBehaviour
     // Initialises base elements
     private void Awake()
     {
-        standingHeight = playerCamera.position.y;
+        standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
         crouchingHeight = (standingHeight - 1f);
         respawnPoint = transform.position;
     }
@@ -84,7 +84,6 @@ public class PlayerMove : MonoBehaviour
     // Draws some information to the screen for debugging purposes.
     private void OnGUI()
     {
-        
         GUIDebuggingInfo(new string[] {
             $"velocity.x: {moveX}",
             $"velocity.y: {velocity.y}",
@@ -102,14 +101,12 @@ public class PlayerMove : MonoBehaviour
             $"totalWallJumps: {totalWallJumps}",
             $"jumpState: {jumpState}"
         });
-        
     }
 
     void ApplyMovements()
     {
         // Checks if standing on objects (that are of the selected LayerMask)
-        isGrounded = Physics.CheckSphere(groundChecker.position, 0.10f, collisionMask);
-        // May not continue on wallrunning feature, but just walljumping!
+        isGrounded = Physics.CheckSphere(groundChecker.position, 0.1f, collisionMask);
         isConnectedToWall = Physics.CheckSphere(wallChecker.position, 0.11f, collisionMask);
 
         moveX = Input.GetAxis("Horizontal");
