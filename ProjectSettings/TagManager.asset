@@ -16,10 +16,10 @@ TagManager:
   - PlayerGlobal
   - Weapon
   - PlayerLocal
-  - 
-  - 
-  - 
-  - 
+  - PlayerGeneral
+  - ParticlesGeneral
+  - ParticlesGlobal
+  - ParticlesLocal
   - 
   - 
   - 
