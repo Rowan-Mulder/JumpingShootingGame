@@ -41,7 +41,7 @@
     - ~~Materials albedo/metallic maken~~
     - ~~Binden aan player-hand armature en maak (uiteindelijk na testen) ontzichtbaar, totdat deze daadwerkelijk in gebruik is of opgepakt wordt.~~
 
-- [x] **Schieten implementeren**
+- [x] ~~**Schieten implementeren**~~
 * ~~Particles activeren van het wapen bij het schieten~~
 * ~~Decals plaatsen in de vorm van een pijl (om normal vector te controleren)~~
 * ~~Maak een decal texture~~
