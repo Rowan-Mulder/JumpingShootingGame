@@ -54,25 +54,24 @@
   - ~~Weight painting optimaliseren~~
 * ~~Materials~~
 
-- [ ] **Look-script nakijken**
-* *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
-  - ~~Gebruik hierbij Time.deltaTime~~
-    - Time.deltatime is geïmplementeerd, maar werkt nog niet als verwacht.
+- [ ] **Layermask toevoegen voor waar kogels op zullen landen**
+* Maak een nieuwe layer
+  - Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)
+    - Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)
+
+- [ ] **AnimationController maken**
+* Alle animation calls zelf beheren met een overzichtelijk script
+  - Gebruik een Enumerator voor alle constante animatie namen
 
 - [ ] **Health toevoegen**
 
 - [ ] **Basis AI gebruiken/maken**
-- Gebruik eerst de Unity AI om te kijken of dit voldoende is.
+- Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
 - Hoort de speler en ziet de speler binnen een bepaalde radius.
   - Gebruik raycasts om te zien of de speler achter een muur zit.
     - Zo ja, reageert het niet op de speler.
     - Zo niet, loopt het richting de speler.
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
-
-- [ ] **Layermask toevoegen voor waar kogels op zullen landen**
-* Maak een nieuwe layer
-  - Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)
-    - Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)
 
 - [ ] **Animaties maken**
 * ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
@@ -95,18 +94,7 @@
 ---
 
 ## TO-DO - lage-prioriteit
-- [ ] **Movement-script rennen verbeteren**
-  - Transition van walking naar rennen moet smoother
 
-- [ ] **Movement-script sliding toevoegen**
-  - Sliden van ramps, bouw veel snelheid op.
-
-- [ ] **Decals limiteren tot een x-aantal**
-
-<br><br><br>
----
-
-## TO-DO - optioneel
 - [ ] **Verschillende guns toevoegen**
 * Assault rifle
 * Sniper rifle
@@ -123,7 +111,25 @@
 * Katana
 * Rubber chicken
 
+<br><br><br>
+---
+
+## TO-DO - optioneel
+
+- [ ] **Movement-script sliding toevoegen**
+  - Sliden van ramps, bouw veel snelheid op.
+
+- [ ] **Decals limiteren tot een x-aantal**
+
 - [ ] **Details toevoegen aan de playermodel, op zijn minst in het gezicht.**
+
+- [ ] **Movement-script rennen verbeteren**
+  - Transition van walking naar rennen moet smoother
+
+- [ ] **Look-script nakijken**
+* *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
+  - ~~Gebruik hierbij Time.deltaTime~~
+    - Time.deltatime is geïmplementeerd, maar werkt nog niet als verwacht.
 
 <br><br><br>
 ---
