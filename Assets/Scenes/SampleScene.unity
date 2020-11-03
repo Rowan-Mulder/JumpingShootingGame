@@ -597,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 71396939}
   - component: {fileID: 71396941}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WeaponCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 104308572}
   - component: {fileID: 104308573}
   - component: {fileID: 104308574}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -976,10 +976,14 @@ MonoBehaviour:
   weaponMuzzle: {fileID: 389517695}
   playerCamera: {fileID: 963194228}
   ammunition: 100
+  shootingDistance: 1000
   readyToFire: 1
   muzzleFlashPistolCamera: {fileID: 380338661}
   muzzleFlashPistolGlobal: {fileID: 389517697}
   gunDecal: {fileID: 1617525045}
+  canShootAt:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &104308574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2059,7 +2063,7 @@ GameObject:
   - component: {fileID: 380338659}
   - component: {fileID: 380338661}
   - component: {fileID: 380338660}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Pistol muzzle flash particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6880,7 +6884,7 @@ GameObject:
   - component: {fileID: 389517695}
   - component: {fileID: 389517697}
   - component: {fileID: 389517696}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Pistol muzzle flash particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13066,7 +13070,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: First-person camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -13112,7 +13116,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 22583
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -13872,7 +13876,7 @@ GameObject:
   - component: {fileID: 1091599475}
   - component: {fileID: 1091599477}
   - component: {fileID: 1091599476}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Third-person camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -13932,7 +13936,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 823
+    m_Bits: 15159
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 1
@@ -14998,7 +15002,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1365367393}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: GroundChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20619,7 +20623,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1812383865}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Third-person camera pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21827,7 +21831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2102387368}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: WallChecker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
