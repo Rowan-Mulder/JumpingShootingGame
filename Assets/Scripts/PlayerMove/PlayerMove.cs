@@ -160,13 +160,13 @@ public class PlayerMove : MonoBehaviour
         // TODO: do collisionchecking before standing back up
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            // TODO: crouchingHeight
+            // TODO: crouchingHeight or CharacterController.Height
             // TODO: playerCamera.position = ;
             isCrouching = true;
         }
         else
         {
-            // TODO: standingheight
+            // TODO: standingheight or CharacterController.Height / 2
             // TODO: playerCamera.position = ;
             isCrouching = false;
         }
