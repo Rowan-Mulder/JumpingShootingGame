@@ -144,18 +144,6 @@ public class PlayerMove : MonoBehaviour
             transformedMove += wallJumpVelocity / 3;
         }
 
-        // Sprinting/Walking
-        if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
-        {
-            speed = runningSpeed;
-            //test2 = 400;
-        }
-        else
-        {
-            speed = walkSpeed;
-            //test2 = 200;
-        }
-
         // Crouching/Standing
         // TODO: do collisionchecking before standing back up
         if (Input.GetKey(KeyCode.LeftControl))
@@ -169,6 +157,19 @@ public class PlayerMove : MonoBehaviour
             // TODO: standingheight or CharacterController.Height / 2
             // TODO: playerCamera.position = ;
             isCrouching = false;
+        }
+
+        // If crouching, slide instead?
+        // Sprinting/Walking
+        if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
+        {
+            speed = runningSpeed;
+            //test2 = 400;
+        }
+        else
+        {
+            speed = walkSpeed;
+            //test2 = 200;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
