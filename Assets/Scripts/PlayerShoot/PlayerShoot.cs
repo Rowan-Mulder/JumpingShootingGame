@@ -5,15 +5,16 @@ using UnityEngine.Rendering;
 
 public class PlayerShoot : MonoBehaviour
 {
-    //Voeg layermask toe voor waar je op kan schieten (zodat je jezelf niet kan schieten en in de lucht een decal instanciate)
-
     public Transform weaponMuzzle;
     public Transform playerCamera;
     public int ammunition = 100;
+    public float shootingDistance = 1000;
+    //public int decalLimit = 50;
     public bool readyToFire = true;
     public ParticleSystem muzzleFlashPistolCamera;
     public ParticleSystem muzzleFlashPistolGlobal;
     public GameObject gunDecal;
+    public LayerMask canShootAt;
 
     // Update is called once per frame
     void Update()
@@ -39,8 +40,8 @@ public class PlayerShoot : MonoBehaviour
 
         RaycastHit hit;
 
-        //Shoots from playerCamera, change to weaponMuzzle for VR
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit))
+        //Shoots from playerCamera, change to weaponMuzzle for VR/third-person
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, shootingDistance, canShootAt))
         {
             GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
             particle.SetActive(true);
