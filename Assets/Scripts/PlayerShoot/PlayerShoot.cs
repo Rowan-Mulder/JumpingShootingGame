@@ -45,6 +45,7 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, shootingDistance, canShootAt))
         {
             // if (shot at enemy/player) {
+                // Wait until after AI enemies have been added before continuing on this
                 playerHealth.Damage(1);
             //} else {
                 GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
