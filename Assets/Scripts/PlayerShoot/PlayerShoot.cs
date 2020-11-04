@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour
     public ParticleSystem muzzleFlashPistolGlobal;
     public GameObject gunDecal;
     public LayerMask canShootAt;
+    public PlayerHealth playerHealth;
 
     // Update is called once per frame
     void Update()
@@ -43,9 +44,13 @@ public class PlayerShoot : MonoBehaviour
         //Shoots from playerCamera, change to weaponMuzzle for VR/third-person
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, shootingDistance, canShootAt))
         {
-            GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
-            particle.SetActive(true);
-            Destroy(particle, 60f);
+            // if (shot at enemy/player) {
+                playerHealth.Damage(1);
+            //} else {
+                GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
+                particle.SetActive(true);
+                Destroy(particle, 60f);
+            //}
         }
     }
 }
