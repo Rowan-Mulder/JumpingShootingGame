@@ -8,17 +8,19 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealthpoints = 100;
     public int currentHealthpoints = 100;
     public Text TextHealthpoints;
+    public Slider healthSlider;
+    public bool dead = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        TextHealthpoints.text = $"{currentHealthpoints}/{maxHealthpoints}";
+        UpdateHealth();
     }
 
-    // Update is called once per frame
-    void Update()
+    void UpdateHealth()
     {
-        
+        TextHealthpoints.text = $"{currentHealthpoints}/{maxHealthpoints}";
+        healthSlider.value = currentHealthpoints;
     }
 
     public void Damage(int damage)
@@ -29,7 +31,7 @@ public class PlayerHealth : MonoBehaviour
             Death();
         }
 
-        TextHealthpoints.text = $"{currentHealthpoints}/{maxHealthpoints}";
+        UpdateHealth();
     }
 
     void Death()
@@ -38,6 +40,13 @@ public class PlayerHealth : MonoBehaviour
         // Display some UI?
         // Blur/darken the screen?
 
+        dead = true;
+    }
 
+    void Revive()
+    {
+        dead = false;
+        currentHealthpoints = maxHealthpoints;
+        UpdateHealth();
     }
 }
