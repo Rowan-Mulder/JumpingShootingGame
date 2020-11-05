@@ -984,7 +984,7 @@ MonoBehaviour:
   gunDecal: {fileID: 1617525045}
   canShootAt:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 32769
   playerHealth: {fileID: 104308575}
 --- !u!114 &104308574
 MonoBehaviour:
@@ -13210,7 +13210,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 6199
+    m_Bits: 38967
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -13687,7 +13687,7 @@ GameObject:
   - component: {fileID: 1044754163}
   - component: {fileID: 1044754162}
   - component: {fileID: 1044754161}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cube (WITH HEALTH)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
