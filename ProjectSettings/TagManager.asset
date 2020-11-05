@@ -15,12 +15,12 @@ TagManager:
   - 
   - PlayerGlobal
   - Weapon
-  - PlayerLocal
+  - PlayerWeaponcam
   - PlayerGeneral
   - ParticlesGeneral
   - ParticlesGlobal
-  - ParticlesLocal
-  - 
+  - ParticlesWeaponcam
+  - Target
   - 
   - 
   - 
