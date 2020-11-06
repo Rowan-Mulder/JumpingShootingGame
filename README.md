@@ -61,10 +61,10 @@
 
 - [ ] **AnimationController maken**
 * Alle animation calls zelf beheren met een overzichtelijk script
-  - Gebruik een Enumerator voor alle constante animatie namen
+  - Gebruik een Enumerator voor alle constante animatie namen en call de animatie d.m.v. de enumerator.
 
-- [ ] **Health script maken**
-* Houd bij hoeveel health het object heeft
+- [x] **Health script maken**
+* ~~Houd bij hoeveel health het object heeft~~
 * Het object wordt verwijderd bij 0hp of doet speciale handelingen bij uitzonderingen als enemies en players.
 
 - [ ] **Basis AI gebruiken/maken**
