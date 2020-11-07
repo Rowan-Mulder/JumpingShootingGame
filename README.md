@@ -60,7 +60,7 @@
     - ~~Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)~~
 
 - [ ] **AnimationController maken**
-* Alle animation calls zelf beheren met een overzichtelijk script
+* ~~Alle animation calls zelf beheren met een script binnen PlayerMove.cs~~
   - Gebruik een Enumerator voor alle constante animatie namen en call de animatie d.m.v. de enumerator.
 
 - [ ] **Health script maken**
@@ -80,6 +80,7 @@
 * ~~Idle~~
 * IdleCrouch
 * Jump
+* Falling
 * Land
 * ~~WalkForwards~~
 * WalkBackwards
