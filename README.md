@@ -82,6 +82,8 @@
 * Jump
 * Falling
 * Land
+* DeathFromFalling
+* DeathFromBullet
 * ~~WalkForwards~~
 * WalkBackwards
 * WalkLeft
