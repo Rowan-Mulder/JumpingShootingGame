@@ -17,7 +17,7 @@ public class PlayerShoot : MonoBehaviour
     public LayerMask canShootAt;
 
     public PlayerHealth playerHealth;
-    public TargetHealth targetHealth;
+    private TargetHealth targetHealth;
 
     // Update is called once per frame
     void Update()
