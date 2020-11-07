@@ -27,6 +27,9 @@ public class PlayerMove : MonoBehaviour
     ///         Also make sure the given radius in the CheckSphere() then matches the radius of the CharacterController.
     /// </summary>
 
+    public Animator animator;
+    public string currentAnimationState;
+
     public CharacterController controller;
     public Transform playerCamera;
     public Transform groundChecker;
@@ -73,6 +76,7 @@ public class PlayerMove : MonoBehaviour
         standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
         crouchingHeight = (standingHeight - 1f);
         respawnPoint = transform.position;
+        ChangeAnimationState("Idle");
     }
 
     // Triggered every frame
@@ -159,17 +163,77 @@ public class PlayerMove : MonoBehaviour
             isCrouching = false;
         }
 
+        bool movingLeft = false;
+        bool movingRight = false;
+        bool movingForwards = false;
+        bool movingBackwards = false;
+        bool standingStill = false;
+
+        if (moveX > 0)
+        {
+            movingRight = true;
+        }
+        else if (moveX < 0)
+        {
+            movingLeft = true;
+        }
+
+        if (moveZ > 0)
+        {
+            movingForwards = true;
+        }
+        else if (moveX < 0)
+        {
+            movingBackwards = true;
+        }
+
+        if (movingForwards == false && movingBackwards == false && movingLeft == false && movingRight == false)
+        {
+            standingStill = true;
+        }
+
         // If crouching, slide instead?
         // Sprinting/Walking
         if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
         {
             speed = runningSpeed;
             //test2 = 400;
+
+            if (movingForwards && isGrounded)
+            {
+                ChangeAnimationState("RunForward");
+            }
+
+            if (movingBackwards && isGrounded)
+            {
+                //ChangeAnimationState("RunBackward");
+            }
         }
         else
         {
             speed = walkSpeed;
             //test2 = 200;
+
+            if (movingForwards && isGrounded)
+            {
+                ChangeAnimationState("WalkForward");
+            }
+
+            if (movingBackwards && isGrounded)
+            {
+                //ChangeAnimationState("WalkBackward");
+            }
+        }
+
+        if (standingStill && isGrounded)
+        {
+            // Random idle animations?
+            ChangeAnimationState("Idle");
+        }
+
+        if (!isGrounded && jumpState == 0)
+        {
+            //ChangeAnimationState("Falling");
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -227,6 +291,7 @@ public class PlayerMove : MonoBehaviour
     {
         velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
         totalJumps++;
+        //ChangeAnimationState("Jump");
     }
 
     private void WallJump()
@@ -244,6 +309,18 @@ public class PlayerMove : MonoBehaviour
     {
         wallJumpVelocity.x = (wallJumpVelocity.x < 0.001f) ? 0 : wallJumpVelocity.x / 1.001f;
         wallJumpVelocity.z = (wallJumpVelocity.z < 0.001f) ? 0 : wallJumpVelocity.z / 1.001f;
+    }
+
+    public void ChangeAnimationState(string newAnimationState)
+    {
+        if (currentAnimationState != newAnimationState)
+        {
+            Debug.Log("switching states from {{" + currentAnimationState + "}} to {{" + newAnimationState +"}}");
+
+            animator.Play(newAnimationState);
+
+            currentAnimationState = newAnimationState;
+        }
     }
 
     private void GUIDebuggingInfo(string[] debugInfo)
