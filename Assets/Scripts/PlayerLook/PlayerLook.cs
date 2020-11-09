@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float mouseSensitivity = 1000f;
+    public float mouseSensitivity = 10f;
     public bool mouseInvertX = false;
     public bool mouseInvertY = false;
     public Transform playerFirstPersonCamera;
@@ -34,8 +34,8 @@ public class PlayerLook : MonoBehaviour
 
     void ApplyRotations()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
         switch (mouseInvertX)
         {
