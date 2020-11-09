@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.CompilerServices;
@@ -29,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 
     public Animator animator;
     public string currentAnimationState;
-
+    Dictionary<string, int> animatorParameters = new Dictionary<string, int>();
+    
     public CharacterController controller;
     public Transform playerCamera;
     public Transform groundChecker;
@@ -76,6 +78,7 @@ public class PlayerMove : MonoBehaviour
         standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
         crouchingHeight = (standingHeight - 1f);
         respawnPoint = transform.position;
+        LoadAnimatorParameters();
         ChangeAnimationState("Idle");
     }
 
@@ -201,6 +204,9 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded)
             {
+                // Werkt nog niet
+                //Debug.Log("speedMultX = " + animator.GetParameter(animatorParameters["speedMultX"]).defaultFloat);
+                // Pas de speedMultX aan vanuit C#. Zoek of dit mogelijk is en makkelijker kan.
                 ChangeAnimationState("RunForward");
             }
 
@@ -315,11 +321,29 @@ public class PlayerMove : MonoBehaviour
     {
         if (currentAnimationState != newAnimationState)
         {
-            Debug.Log("switching states from {{" + currentAnimationState + "}} to {{" + newAnimationState +"}}");
+            //Debug.Log("switching states from {{" + currentAnimationState + "}} to {{" + newAnimationState +"}}");
 
             animator.Play(newAnimationState);
 
             currentAnimationState = newAnimationState;
+        }
+    }
+
+    public void LoadAnimatorParameters()
+    {
+        bool continues = true;
+
+        for (int i = 0; continues; i++)
+        {
+            try
+            {
+                animatorParameters.Add(animator.GetParameter(i).name, i);
+                //Debug.Log("ADDED     Name:" + animator.GetParameter(i).name + " Index:" + i);
+            }
+            catch (IndexOutOfRangeException)
+            {
+                continues = false;
+            }
         }
     }
 
