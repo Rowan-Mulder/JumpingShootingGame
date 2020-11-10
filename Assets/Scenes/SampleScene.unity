@@ -924,7 +924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d3bcf0328dbacb4d892e77a28669c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 10
+  mouseSensitivity: 1000
   mouseInvertX: 0
   mouseInvertY: 0
   playerFirstPersonCamera: {fileID: 963194228}
@@ -955,13 +955,12 @@ MonoBehaviour:
     m_Bits: 1
   moveX: 0
   moveZ: 0
-  previousFramePosition: {x: 0, y: 0, z: 0}
   speed: 5
   walkSpeed: 5
   runningSpeed: 10
   gravity: -40
   jumpHeight: 2
-  fallingSpeedLimit: 100
+  velocityLimitY: 100
   autoJumping: 0
   walljumpLimit: 3
 --- !u!114 &104308573
