@@ -61,7 +61,7 @@
 
 - [ ] **AnimationController maken**
 * ~~Alle animation calls zelf beheren met een script binnen PlayerMove.cs~~
-  - Gebruik een Enumerator voor alle constante animatie namen en call de animatie d.m.v. de enumerator.
+  - Gebruik een Enumerator/Dictionary (hash array) voor alle constante animatie namen en call de animatie met behulp hiervan.
 
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
@@ -84,12 +84,12 @@
 * Land
 * DeathFromFalling
 * DeathFromBullet
-* ~~WalkForwards~~
-* WalkBackwards
+* ~~WalkForward~~
+* WalkBackward
 * WalkLeft
 * WalkRight
-* ~~RunForwards~~
-* RunBackwards
+* ~~RunForward~~
+* RunBackward
 * RunLeft
 * RunRight
 - ShootGun
@@ -122,19 +122,20 @@
 ## TO-DO - optioneel
 
 - [ ] **Movement-script sliding toevoegen**
-  - Sliden van ramps, bouw veel snelheid op.
+  - Sliden van ramps, zou hierbij snelheid kunnen opbouwen.
 
 - [ ] **Decals limiteren tot een x-aantal**
 
 - [ ] **Details toevoegen aan de playermodel, op zijn minst in het gezicht.**
 
-- [ ] **Movement-script rennen verbeteren**
-  - Transition van walking naar rennen moet smoother
+- [ ] **Movement-script verbeteren**
+  - Movement animaties laten bepalen door 'average move direction' (Vector2(x,y))
+  - Transition van walking naar rennen kan smoother
 
-- [ ] **Look-script nakijken**
-* *Kijken is gebonden aan framerate. Met een lagere framerate (op laptop) stottert het.*
+- [x] **Look-script nakijken**
+* *Rondkijken was gebonden aan Time.deltaTime, wat niet nodig is omdat deltaTime al is berekend voor mouse input. Met een lagere framerate (op laptop) stotterde het.*
   - ~~Gebruik hierbij Time.deltaTime~~
-    - Time.deltatime is geïmplementeerd, maar werkt nog niet als verwacht.
+    - ~~Time.deltaTime is geïmplementeerd, maar werkt nog niet als verwacht (Oplossing: Time.deltaTime verwijderd).~~
 
 <br><br><br>
 ---
