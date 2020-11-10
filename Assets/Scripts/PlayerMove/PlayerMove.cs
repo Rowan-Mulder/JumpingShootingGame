@@ -40,6 +40,8 @@ public class PlayerMove : MonoBehaviour
 
     public float moveX;
     public float moveZ;
+    public Vector3 previousFramePosition;
+    private float movingSpeed; // Calculated movement speed (walking into walls will affect this speed)
     Vector3 transformedMove;
     Vector3 respawnPoint;
 
@@ -48,7 +50,7 @@ public class PlayerMove : MonoBehaviour
     public float runningSpeed = 10f;
     public float gravity = -30f;
     public float jumpHeight = 3f;
-    public float velocityLimitY = 100f;
+    public float fallingSpeedLimit = 100f;
     public bool autoJumping = false;
     public int walljumpLimit = 3;
 
@@ -99,7 +101,7 @@ public class PlayerMove : MonoBehaviour
             $"transformedMove.z: {transformedMove.z}",
             $"wallJumpVelocity.x: {wallJumpVelocity.x}",
             $"wallJumpVelocity.z: {wallJumpVelocity.z}",
-            $"velocityLimitY: {velocityLimitY}",
+            $"fallingSpeedLimit: {fallingSpeedLimit}",
             $"isGrounded: {isGrounded}",
             $"isConnectedToWall: {isConnectedToWall}",
             $"isCrouching: {isCrouching}",
@@ -204,15 +206,14 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded)
             {
-                // Werkt nog niet
-                //Debug.Log("speedMultX = " + animator.GetParameter(animatorParameters["speedMultX"]).defaultFloat);
-                // Pas de speedMultX aan vanuit C#. Zoek of dit mogelijk is en makkelijker kan.
                 ChangeAnimationState("RunForward");
+                animator.speed = movingSpeed / runningSpeed;
             }
 
             if (movingBackwards && isGrounded)
             {
                 //ChangeAnimationState("RunBackward");
+                animator.speed = movingSpeed / runningSpeed;
             }
         }
         else
@@ -223,11 +224,13 @@ public class PlayerMove : MonoBehaviour
             if (movingForwards && isGrounded)
             {
                 ChangeAnimationState("WalkForward");
+                animator.speed = movingSpeed / walkSpeed;
             }
 
             if (movingBackwards && isGrounded)
             {
                 //ChangeAnimationState("WalkBackward");
+                animator.speed = movingSpeed / walkSpeed;
             }
         }
 
@@ -240,6 +243,7 @@ public class PlayerMove : MonoBehaviour
         if (!isGrounded && jumpState == 0)
         {
             //ChangeAnimationState("Falling");
+            //animator.speed = Math.Abs(velocity.y) / fallingSpeedLimit;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
@@ -273,7 +277,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Limits fallingspeed
-        if (velocity.y > -velocityLimitY)
+        if (velocity.y > -fallingSpeedLimit)
             velocity.y += gravity * Time.deltaTime;
 
         //WallJumpDrag();
@@ -291,6 +295,11 @@ public class PlayerMove : MonoBehaviour
         // On pressing 'R', it will teleport you to the original set position
         if (Input.GetKey(KeyCode.R))
             transform.position = respawnPoint;
+
+        // Calculates movement speed from displacement
+        float movementPerFrame = Vector3.Distance(previousFramePosition, transform.position);
+        movingSpeed = movementPerFrame / Time.deltaTime;
+        previousFramePosition = transform.position;
     }
 
     private void Jump()
@@ -321,14 +330,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (currentAnimationState != newAnimationState)
         {
-            //Debug.Log("switching states from {{" + currentAnimationState + "}} to {{" + newAnimationState +"}}");
-
+            animator.speed = 1.0f;
             animator.Play(newAnimationState);
-
             currentAnimationState = newAnimationState;
         }
     }
 
+    //*/ Loads the Animator Parameters. Requires a reference for later adjustments.
     public void LoadAnimatorParameters()
     {
         bool continues = true;
@@ -346,6 +354,7 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+    //*/
 
     private void GUIDebuggingInfo(string[] debugInfo)
     {

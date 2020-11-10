@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public float mouseSensitivity = 10f;
+    public float mouseSensitivity = 5f;
     public bool mouseInvertX = false;
     public bool mouseInvertY = false;
     public Transform playerFirstPersonCamera;
