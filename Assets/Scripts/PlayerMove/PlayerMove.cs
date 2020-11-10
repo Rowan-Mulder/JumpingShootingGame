@@ -80,7 +80,6 @@ public class PlayerMove : MonoBehaviour
         standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
         crouchingHeight = (standingHeight - 1f);
         respawnPoint = transform.position;
-        LoadAnimatorParameters();
         ChangeAnimationState("Idle");
     }
 
@@ -336,7 +335,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    //*/ Loads the Animator Parameters. Requires a reference for later adjustments.
+    /*/ Loads the Animator Parameters. Can't later set these parameters, so now using: animator.speed
     public void LoadAnimatorParameters()
     {
         bool continues = true;
