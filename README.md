@@ -78,12 +78,9 @@
 - [ ] **Animaties maken**
 * ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
 * ~~Idle~~
-* IdleCrouch
 * Jump
 * Falling
 * Land
-* DeathFromFalling
-* DeathFromBullet
 * ~~WalkForward~~
 * WalkBackward
 * WalkLeft
@@ -92,8 +89,6 @@
 * RunBackward
 * RunLeft
 * RunRight
-- ShootGun
-  - *Een aparte animatie voor iedere gun?*
 
 <br><br><br>
 ---
@@ -115,6 +110,13 @@
 * Baseball bat
 * Katana
 * Rubber chicken
+
+
+- [ ] **Meer animaties maken**
+* DeathFromFalling
+* DeathFromBullet
+- ShootGun
+  - *Een aparte animatie voor iedere gun?*
 
 <br><br><br>
 ---
