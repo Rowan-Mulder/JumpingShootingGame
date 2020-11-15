@@ -47,24 +47,24 @@
 * ~~Maak een decal texture~~
 * ~~Decal pijl model vervangen met billboard met decal texture~~
 
-- [x] **Gerigged character model maken (voor speler + enemy)**
+- [x] ~~**Gerigged character model maken (voor speler + enemy)**~~
 * ~~Modelen~~
 * ~~Armarture~~
 * ~~Rigging~~
   - ~~Weight painting optimaliseren~~
 * ~~Materials~~
 
-- [x] **Layermask toevoegen voor waar kogels op zullen landen**
+- [x] ~~**Layermask toevoegen voor waar kogels op zullen landen**~~
 * ~~Maak een nieuwe layer~~
   - ~~Zorg dat kogels alleen zullen stoppen zodra zij deze layer tegen komen (of het afstandslimiet)~~
     - ~~Kijk of het werkt (en dat jij, of de enemies, niet meer jouw eigen globale playermodel kan schieten)~~
 
-- [x] **Kijk naar LateUpdate()**
+- [x] ~~**Kijk naar LateUpdate()**~~
 * *LateUpdate() wordt later uitgevoerd dan Update()*
   - ~~Stop van PlayerLook.cs de globale beweging van de nek en het arm binnen LateUpdate()~~
     - ~~Kijk of dit het probleem globaal oplost waarbij de animatie prioriteit geeft over de nek/arm bewegingen. (dit loste het probleem op)~~
 
-- [x] **AnimationController maken**
+- [x] ~~**AnimationController maken**~~
 * ~~Alle animation calls zelf beheren met een script binnen PlayerMove.cs~~
   - ~~Gebruik een Enumerator/Dictionary (hash array) voor alle constante animatie namen en call de animatie met behulp hiervan.~~
   - ~~Kijk voor animation blending (Besloten dit niet te doen. Uiteindelijk misschien de niet-scripted methode gebruiken, maar dit zal veel tijd kosten)~~
