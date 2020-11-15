@@ -930,6 +930,8 @@ MonoBehaviour:
   playerFirstPersonCamera: {fileID: 963194228}
   playerThirdPersonCamera: {fileID: 1812383865}
   playerNeckbone: {fileID: 184107303}
+  playerSpineGlobal: {fileID: 1939472604}
+  playerShoulderGlobal: {fileID: 1053445767}
   playerUpperArmGlobal: {fileID: 734619649}
   playerUpperArmLocal: {fileID: 1024125771}
 --- !u!114 &104308572
@@ -964,6 +966,7 @@ MonoBehaviour:
   fallingSpeedLimit: 100
   autoJumping: 0
   walljumpLimit: 3
+  haltedAnimations: 0
 --- !u!114 &104308573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13827,6 +13830,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1053445767 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7569250006640272649, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 301243132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1053885135
 GameObject:
   m_ObjectHideFlags: 0
@@ -21578,6 +21586,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!4 &1939472604 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8844204364281339845, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 301243132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943963852
 GameObject:
   m_ObjectHideFlags: 0
