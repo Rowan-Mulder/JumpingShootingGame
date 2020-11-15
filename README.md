@@ -114,6 +114,7 @@
 * Knife
 * Baseball bat
 * Katana
+* Guitar
 * Rubber chicken
 
 
