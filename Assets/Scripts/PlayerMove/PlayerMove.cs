@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ComTypes;
@@ -30,7 +31,7 @@ public class PlayerMove : MonoBehaviour
 
     public Animator animator;
     public string currentAnimationState;
-    Dictionary<string, int> animatorParameters = new Dictionary<string, int>();
+    readonly Dictionary<string, int> animatorParameters = new Dictionary<string, int>();
     
     public CharacterController controller;
     public Transform playerCamera;
@@ -72,7 +73,13 @@ public class PlayerMove : MonoBehaviour
     //float test1 = 0;
     //float test2 = 200;
 
-
+    public bool haltedAnimations = false;
+    public enum Animations
+    {
+        Idle,
+        WalkForward,
+        RunForward
+    };
 
     // Initialises base elements
     private void Awake()
@@ -80,7 +87,7 @@ public class PlayerMove : MonoBehaviour
         standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
         crouchingHeight = (standingHeight - 1f);
         respawnPoint = transform.position;
-        ChangeAnimationState("Idle");
+        ChangeAnimationState(Animations.Idle);
     }
 
     // Triggered every frame
@@ -153,17 +160,17 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Crouching/Standing
-        // TODO: do collisionchecking before standing back up
+        // ADDITIONAL_FEATURE: do collisionchecking before standing back up
         if (Input.GetKey(KeyCode.LeftControl))
         {
-            // TODO: crouchingHeight or CharacterController.Height
-            // TODO: playerCamera.position = ;
+            // ADDITIONAL_FEATURE: crouchingHeight or CharacterController.Height
+            // ADDITIONAL_FEATURE: playerCamera.position = ;
             isCrouching = true;
         }
         else
         {
-            // TODO: standingheight or CharacterController.Height / 2
-            // TODO: playerCamera.position = ;
+            // ADDITIONAL_FEATURE: standingheight or CharacterController.Height / 2
+            // ADDITIONAL_FEATURE: playerCamera.position = ;
             isCrouching = false;
         }
 
@@ -205,7 +212,7 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded)
             {
-                ChangeAnimationState("RunForward");
+                ChangeAnimationState(Animations.RunForward);
                 animator.speed = movingSpeed / runningSpeed;
             }
 
@@ -222,7 +229,7 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded)
             {
-                ChangeAnimationState("WalkForward");
+                ChangeAnimationState(Animations.WalkForward);
                 animator.speed = movingSpeed / walkSpeed;
             }
 
@@ -233,10 +240,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (standingStill && isGrounded)
+        // Will not idle if specific animations should finish first (using Invoke()). This only applies to full animations, not partial animations (like moving an arm).
+        if (standingStill && isGrounded && !haltedAnimations)
         {
-            // Random idle animations?
-            ChangeAnimationState("Idle");
+            // ADDITIONAL_FEATURE: Random idle animations, using animator.GetCurrentAnimatorStateInfo(0).length to determine when an idle animation has finished to activate a new one when still idle.
+            ChangeAnimationState(Animations.Idle);
         }
 
         if (!isGrounded && jumpState == 0)
@@ -256,8 +264,8 @@ public class PlayerMove : MonoBehaviour
             if (isGrounded && jumpState < 2)
             {
                 // Regular jump
-                // TODO: The longer it's held, the higher your jump will be.
-                // TIP: This is triggered between 10 and 20 times on initial jump, then once each reoccuring jump (might be a bug, but it's not a problem yet). Limiting the initial jump to 1 makes the jump extremely weak.
+                // ADDITIONAL_FEATURE: The longer it's held, the higher your jump will be.
+                // INFO: This is triggered between 10 and 20 times on initial jump, then once each reoccuring jump (might be a bug, but it's not a problem yet). Limiting the initial jump to 1 makes the jump extremely weak.
                 
                 Jump();
                 jumpState = 1;
@@ -265,7 +273,7 @@ public class PlayerMove : MonoBehaviour
             else if (isConnectedToWall && consecutiveWalljumps < walljumpLimit && jumpState == 0)
             {
                 // Wall jump
-                // TODO: Prevent reaching walljump limit with one single jump by doing checkups each frame, like a normal jump. (watch out for when autojumping is enabled it should still work)
+                // ADDITIONAL_FEATURE: When autojumping is enabled and jump peak has been reached, schedule next walljump for when isConnectedToWall is true and isGrounded hasn't been true until then. (Could use wallJumpState like jumpState?)
 
                 WallJump();
                 Jump();
@@ -325,8 +333,11 @@ public class PlayerMove : MonoBehaviour
         wallJumpVelocity.z = (wallJumpVelocity.z < 0.001f) ? 0 : wallJumpVelocity.z / 1.001f;
     }
 
-    public void ChangeAnimationState(string newAnimationState)
+    // Activeert animaties voor het huidige object met dit script. Voor uitvoering van animaties na een bepaalde tijd, gebruik: Invoke("SomeMethodWithoutUsingParams", 0.5f);
+    public void ChangeAnimationState(Animations animation)
     {
+        string newAnimationState = animation.ToString();
+
         if (currentAnimationState != newAnimationState)
         {
             animator.speed = 1.0f;
@@ -335,7 +346,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-    /*/ Loads the Animator Parameters. Can't later set these parameters, so now using: animator.speed
+    /*/ Loads the Animator Parameters. This method is no longer used.
     public void LoadAnimatorParameters()
     {
         bool continues = true;
