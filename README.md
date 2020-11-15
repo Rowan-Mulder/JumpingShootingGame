@@ -64,9 +64,10 @@
   - ~~Stop van PlayerLook.cs de globale beweging van de nek en het arm binnen LateUpdate()~~
     - ~~Kijk of dit het probleem globaal oplost waarbij de animatie prioriteit geeft over de nek/arm bewegingen. (dit loste het probleem op)~~
 
-- [x] **AnimationController maken**
+- [ ] **AnimationController maken**
 * ~~Alle animation calls zelf beheren met een script binnen PlayerMove.cs~~
   - ~~Gebruik een Enumerator/Dictionary (hash array) voor alle constante animatie namen en call de animatie met behulp hiervan.~~
+  - Kijk voor animation blending
 
 - [ ] **Basis AI gebruiken/maken**
 - Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
@@ -94,6 +95,11 @@
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
 * Het object wordt verwijderd bij 0hp of doet speciale handelingen bij uitzonderingen als enemies en players.
+
+- [ ] **Crouching**
+  - Bij crouching (LEFT_SHIFT), maak de Character Controller height (direct) lager.
+  - Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.
+    - Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.
 
 <br><br><br>
 ---
