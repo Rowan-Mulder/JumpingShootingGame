@@ -64,18 +64,10 @@
   - ~~Stop van PlayerLook.cs de globale beweging van de nek en het arm binnen LateUpdate()~~
     - ~~Kijk of dit het probleem globaal oplost waarbij de animatie prioriteit geeft over de nek/arm bewegingen. (dit loste het probleem op)~~
 
-- [ ] **AnimationController maken**
+- [x] **AnimationController maken**
 * ~~Alle animation calls zelf beheren met een script binnen PlayerMove.cs~~
   - ~~Gebruik een Enumerator/Dictionary (hash array) voor alle constante animatie namen en call de animatie met behulp hiervan.~~
-  - Kijk voor animation blending
-
-- [ ] **Basis AI gebruiken/maken**
-- Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
-- Hoort de speler en ziet de speler binnen een bepaalde radius.
-  - Gebruik raycasts om te zien of de speler achter een muur zit.
-    - Zo ja, reageert het niet op de speler.
-    - Zo niet, loopt het richting de speler.
-  - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
+  - ~~Kijk voor animation blending (Besloten dit niet te doen. Uiteindelijk misschien de niet-scripted methode gebruiken, maar dit zal veel tijd kosten)~~
 
 - [ ] **Animaties maken**
 * ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
@@ -91,6 +83,14 @@
 * RunBackward
 * RunLeft
 * RunRight
+
+- [ ] **Basis AI gebruiken/maken**
+- Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
+- Hoort de speler en ziet de speler binnen een bepaalde radius.
+  - Gebruik raycasts om te zien of de speler achter een muur zit.
+    - Zo ja, reageert het niet op de speler.
+    - Zo niet, loopt het richting de speler.
+  - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
