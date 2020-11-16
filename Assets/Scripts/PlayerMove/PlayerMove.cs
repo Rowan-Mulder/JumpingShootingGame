@@ -81,6 +81,7 @@ public class PlayerMove : MonoBehaviour
         RunForward,
         WalkBackward,
         RunBackward
+		// Note when adding animations and all (or some) animations are not displayed: Save the model. Export the model to .fbx with the right settings. Add the animations, set them to the right time and loop them if required. In the animator, add new animations and make sure old animations are still linked.
     };
 
     // Initialises base elements
