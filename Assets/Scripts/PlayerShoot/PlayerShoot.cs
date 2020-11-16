@@ -5,7 +5,6 @@ using UnityEngine.Rendering;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public Transform weaponMuzzle;
     public Transform playerCamera;
     public int ammunition = 100;
     public float shootingDistance = 1000;
