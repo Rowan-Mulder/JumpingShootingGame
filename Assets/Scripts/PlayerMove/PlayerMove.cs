@@ -78,7 +78,9 @@ public class PlayerMove : MonoBehaviour
     {
         Idle,
         WalkForward,
-        RunForward
+        RunForward,
+        WalkBackward,
+        RunBackward
     };
 
     // Initialises base elements
@@ -193,7 +195,7 @@ public class PlayerMove : MonoBehaviour
         {
             movingForwards = true;
         }
-        else if (moveX < 0)
+        else if (moveZ < 0)
         {
             movingBackwards = true;
         }
@@ -203,7 +205,7 @@ public class PlayerMove : MonoBehaviour
             standingStill = true;
         }
 
-        // If crouching, slide instead?
+        // ADDITIONAL_FEATURE: If crouching, slide instead?
         // Sprinting/Walking
         if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
         {
@@ -218,7 +220,7 @@ public class PlayerMove : MonoBehaviour
 
             if (movingBackwards && isGrounded)
             {
-                //ChangeAnimationState("RunBackward");
+                ChangeAnimationState(Animations.RunBackward);
                 animator.speed = movingSpeed / runningSpeed;
             }
         }
@@ -235,7 +237,7 @@ public class PlayerMove : MonoBehaviour
 
             if (movingBackwards && isGrounded)
             {
-                //ChangeAnimationState("WalkBackward");
+                ChangeAnimationState(Animations.WalkBackward);
                 animator.speed = movingSpeed / walkSpeed;
             }
         }
@@ -340,6 +342,8 @@ public class PlayerMove : MonoBehaviour
 
         if (currentAnimationState != newAnimationState)
         {
+            Debug.Log(animation);
+            Debug.Log(animation.ToString());
             animator.speed = 1.0f;
             animator.Play(newAnimationState);
             currentAnimationState = newAnimationState;
