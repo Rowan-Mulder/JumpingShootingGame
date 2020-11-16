@@ -134,11 +134,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: WalkBackward
-      takeName: Armature.001|WalkBackward
+      name: RunBackward
+      takeName: Armature.001|RunBackward
       internalID: 0
       firstFrame: 0
-      lastFrame: 24
+      lastFrame: 12
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -163,11 +163,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: RunBackward
-      takeName: Armature.001|RunBackward
+      name: WalkBackward
+      takeName: Armature.001|WalkBackward
       internalID: 0
       firstFrame: 0
-      lastFrame: 12
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
