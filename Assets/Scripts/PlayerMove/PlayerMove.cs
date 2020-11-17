@@ -343,8 +343,6 @@ public class PlayerMove : MonoBehaviour
 
         if (currentAnimationState != newAnimationState)
         {
-            Debug.Log(animation);
-            Debug.Log(animation.ToString());
             animator.speed = 1.0f;
             animator.Play(newAnimationState);
             currentAnimationState = newAnimationState;
