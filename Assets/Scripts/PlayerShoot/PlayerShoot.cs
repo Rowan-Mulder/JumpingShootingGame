@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
     public LayerMask canShootAt;
 
     public PlayerHealth playerHealth;
-    private TargetHealth targetHealth;
+    private EnemyHealth enemyHealth;
 
     // Update is called once per frame
     void Update()
@@ -46,8 +46,8 @@ public class PlayerShoot : MonoBehaviour
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, shootingDistance, canShootAt))
         {
             if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target") {
-                targetHealth = (TargetHealth)hit.collider.gameObject.GetComponent("TargetHealth");
-                targetHealth.Damage(1);
+                enemyHealth = (EnemyHealth)hit.collider.gameObject.GetComponent("EnemyHealth");
+                enemyHealth.Damage(1);
             } else {
                 GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
                 particle.SetActive(true);
