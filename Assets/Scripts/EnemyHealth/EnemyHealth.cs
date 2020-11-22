@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealthpoints = 100;
-    public int currentHealthpoints = 100;
+    public int maxHealthpoints = 10;
+    public int currentHealthpoints = 10;
     public bool dead = false;
 
     // Start is called before the first frame update
@@ -42,6 +42,8 @@ public class EnemyHealth : MonoBehaviour
         // Activate death animation and destroy current object after some time for performance?
 
         dead = true;
+
+        Destroy(gameObject);
     }
 
     void Revive()
