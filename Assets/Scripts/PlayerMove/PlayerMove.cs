@@ -47,6 +47,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 respawnPoint;
 
     public float speed;
+    public float crouchingSpeed = 2.5f;
     public float walkSpeed = 5f;
     public float runningSpeed = 10f;
     public float gravity = -30f;
@@ -63,8 +64,9 @@ public class PlayerMove : MonoBehaviour
     bool isGrounded;
     bool isConnectedToWall;
     bool isCrouching = false;
-    float standingHeight;
-    float crouchingHeight;
+    public Transform firstPersonCameraPosition;
+    private Vector3 characterCapsuleStart;
+    private Vector3 characterCapsuleEnd;
     int consecutiveWalljumps;
     int totalJumps;
     int totalWallJumps;
@@ -87,9 +89,7 @@ public class PlayerMove : MonoBehaviour
     // Initialises base elements
     private void Awake()
     {
-        standingHeight = playerCamera.position.y; // Kan beter CharacterController.Height wezen en crouchingHeight is ongeveer de helft hiervan.
-        crouchingHeight = (standingHeight - 1f);
-        respawnPoint = transform.position;
+        respawnPoint = transform.position; // This can be updated to be used for a checkpoint system.
         ChangeAnimationState(Animations.Idle);
     }
 
@@ -163,18 +163,24 @@ public class PlayerMove : MonoBehaviour
         }
 
         // Crouching/Standing
-        // ADDITIONAL_FEATURE: do collisionchecking before standing back up
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && !isCrouching)
         {
-            // ADDITIONAL_FEATURE: crouchingHeight or CharacterController.Height
-            // ADDITIONAL_FEATURE: playerCamera.position = ;
             isCrouching = true;
+            controller.height = 1.3f;
+            controller.center = new Vector3(0, (controller.height / 2), 0);
+            playerCamera.position = new Vector3(playerCamera.position.x, (firstPersonCameraPosition.position.y - 0.7f), playerCamera.position.z);
         }
-        else
+        else if (!Input.GetKey(KeyCode.LeftControl) && isCrouching)
         {
-            // ADDITIONAL_FEATURE: standingheight or CharacterController.Height / 2
-            // ADDITIONAL_FEATURE: playerCamera.position = ;
-            isCrouching = false;
+            CharacterCapsule();
+
+            if (!Physics.CheckCapsule(characterCapsuleStart, characterCapsuleEnd, controller.radius, collisionMask))
+            {
+                isCrouching = false;
+                controller.height = 2.0f;
+                controller.center = new Vector3(0, (controller.height / 2), 0);
+                playerCamera.position = new Vector3(playerCamera.position.x, (firstPersonCameraPosition.position.y), playerCamera.position.z);
+            }
         }
 
         bool movingLeft = false;
@@ -208,7 +214,7 @@ public class PlayerMove : MonoBehaviour
 
         // ADDITIONAL_FEATURE: If crouching, slide instead?
         // Sprinting/Walking
-        if (Input.GetKey(KeyCode.LeftShift) && consecutiveWalljumps == 0)
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0)
         {
             speed = runningSpeed;
             //test2 = 400;
@@ -223,6 +229,23 @@ public class PlayerMove : MonoBehaviour
             {
                 ChangeAnimationState(Animations.RunBackward);
                 animator.speed = movingSpeed / runningSpeed;
+            }
+        }
+        else if (isCrouching)
+        {
+            speed = crouchingSpeed;
+            //test2 = 100;
+
+            if (movingForwards && isGrounded)
+            {
+                //ChangeAnimationState(Animations.CrouchForward);
+                animator.speed = movingSpeed / crouchingSpeed;
+            }
+
+            if (movingBackwards && isGrounded)
+            {
+                //ChangeAnimationState(Animations.CrouchBackward);
+                animator.speed = movingSpeed / crouchingSpeed;
             }
         }
         else
@@ -334,6 +357,13 @@ public class PlayerMove : MonoBehaviour
     {
         wallJumpVelocity.x = (wallJumpVelocity.x < 0.001f) ? 0 : wallJumpVelocity.x / 1.001f;
         wallJumpVelocity.z = (wallJumpVelocity.z < 0.001f) ? 0 : wallJumpVelocity.z / 1.001f;
+    }
+
+	// Preperation needed to calculate collisions for the character capsule when un-crouching.
+    private void CharacterCapsule()
+    {
+        characterCapsuleStart = new Vector3(transform.position.x, (transform.position.y + 0.1f), transform.position.z);
+        characterCapsuleEnd = new Vector3(transform.position.x, ((transform.position.y + 2f) - 0.1f), transform.position.z);
     }
 
     // Activeert animaties voor het huidige object met dit script. Voor uitvoering van animaties na een bepaalde tijd, gebruik: Invoke("SomeMethodWithoutUsingParams", 0.5f);
