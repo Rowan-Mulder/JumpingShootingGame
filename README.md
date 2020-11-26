@@ -84,22 +84,22 @@
 * RunLeft
 * RunRight
 
-- [ ] **Basis AI gebruiken/maken**
-- Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn.
+- [x] ~~**Crouching**~~
+  - ~~Bij crouching (LEFT_SHIFT), maak de Character Controller height (direct) lager.~~
+  - ~~Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.~~
+    - ~~Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.~~
+
+- [x] **Basis AI gebruiken/maken**
+- ~~Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn. (het is voldoende voor de basis)~~
 - Hoort de speler en ziet de speler binnen een bepaalde radius.
   - Gebruik raycasts om te zien of de speler achter een muur zit.
-    - Zo ja, reageert het niet op de speler.
+    - Zo ja, reageert het niet of minder snel op de speler.
     - Zo niet, loopt het richting de speler.
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
 * Het object wordt verwijderd bij 0hp of doet speciale handelingen bij uitzonderingen als enemies en players.
-
-- [ ] **Crouching**
-  - Bij crouching (LEFT_SHIFT), maak de Character Controller height (direct) lager.
-  - Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.
-    - Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.
 
 <br><br><br>
 ---
@@ -114,7 +114,7 @@
 - [ ] **Grenades toevoegen**
 * HE Grenade
 * Smoke bomb
-* Decoy
+* Decoy (steen ter afleiding)
 
 - [ ] **Melee weapons maken**
 * Knife
