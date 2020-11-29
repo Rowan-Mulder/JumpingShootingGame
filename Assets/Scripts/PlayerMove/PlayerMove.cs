@@ -189,25 +189,26 @@ public class PlayerMove : MonoBehaviour
         bool movingBackwards = false;
         bool standingStill = false;
 
-        if (moveX > 0)
+        // 0.04 due to idle animation never triggered due to Unity not dealing with controller thumbstick deadzones.
+        if (moveX > 0.04)
         {
             movingRight = true;
         }
-        else if (moveX < 0)
+        else if (moveX < -0.04)
         {
             movingLeft = true;
         }
 
-        if (moveZ > 0)
+        if (moveZ > 0.04)
         {
             movingForwards = true;
         }
-        else if (moveZ < 0)
+        else if (moveZ < -0.04)
         {
             movingBackwards = true;
         }
 
-        if (movingForwards == false && movingBackwards == false && movingLeft == false && movingRight == false)
+        if (!movingForwards && !movingBackwards && !movingLeft && !movingRight)
         {
             standingStill = true;
         }
