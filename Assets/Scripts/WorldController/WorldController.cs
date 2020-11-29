@@ -32,9 +32,9 @@ public class WorldController : MonoBehaviour
 
     void SpawnEnemy()
     {
+        int randomNumber = Random.Range(0, spawnLocationsAmount);
         enemiesReadyToSpawn = false;
 
-        int randomNumber = RandomNumber(0, spawnLocationsAmount);
         if (spawnLocations[randomNumber].childCount < enemiesSpawnLimitPerSpawnLocation) {
             GameObject enemy = Instantiate(enemyInstanciable, spawnLocations[randomNumber]);
             enemy.SetActive(true);
@@ -48,10 +48,5 @@ public class WorldController : MonoBehaviour
     void PrepareNextEnemySpawn()
     {
         enemiesReadyToSpawn = true;
-    }
-
-    int RandomNumber(int min, int max)
-    {
-        return Random.Range(min, max);
     }
 }
