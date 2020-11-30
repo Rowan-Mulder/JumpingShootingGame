@@ -13,6 +13,7 @@ public class WorldController : MonoBehaviour
     public Transform[] spawnLocations;
     public int spawnLocationsAmount;
     public LayerMask enemyCollisionMask;
+    private int enemyId = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +38,14 @@ public class WorldController : MonoBehaviour
         var currentSpawnLocation = spawnLocations[randomNumber];
         enemiesReadyToSpawn = false;
 
-		if (!Physics.CheckCapsule(currentSpawnLocation.position + new Vector3(0, 0.2f, 0), currentSpawnLocation.position - new Vector3(0, 0.2f, 0), 0.2f, enemyCollisionMask)) {
+		if (!Physics.CheckCapsule(currentSpawnLocation.position + new Vector3(0, 0.4f, 0), currentSpawnLocation.position - new Vector3(0, 0.4f, 0), 0.4f, enemyCollisionMask)) {
 			if (spawnLocations[randomNumber].childCount < enemiesSpawnLimitPerSpawnLocation) {
 				GameObject enemy = Instantiate(enemyInstanciable, spawnLocations[randomNumber]);
+                enemy.name = ("Enemy_" + EnemyId());
 				enemy.SetActive(true);
-
-				enemiesToSpawn--;
-			}
+                enemiesToSpawn--;
+                // Enemy will spawn wether in sight of the player or not. Only easy way to check if enemy would be in sight is when it is already spawned, which makes its MeshRenderer.isVisible true. A bodge fix may be done where materials are invisible, but I'd rather leave it as is for now.
+            }
 		}
 
         Invoke("PrepareNextEnemySpawn", (enemiesSpawnDelayInMiliseconds / 1000));
@@ -52,5 +54,14 @@ public class WorldController : MonoBehaviour
     void PrepareNextEnemySpawn()
     {
         enemiesReadyToSpawn = true;
+    }
+
+    int EnemyId()
+    {
+        if (enemyId > 10000) {
+            return enemyId = 1;
+        }
+
+        return enemyId++;
     }
 }
