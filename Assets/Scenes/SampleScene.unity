@@ -28077,3 +28077,6 @@ MonoBehaviour:
   - {fileID: 556511334}
   - {fileID: 951684246}
   spawnLocationsAmount: 0
+  enemyCollisionMask:
+    serializedVersion: 2
+    m_Bits: 32768
