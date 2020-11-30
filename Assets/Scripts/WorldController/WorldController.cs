@@ -37,14 +37,14 @@ public class WorldController : MonoBehaviour
         var currentSpawnLocation = spawnLocations[randomNumber];
         enemiesReadyToSpawn = false;
 
-        if (!Physics.CheckCapsule(currentSpawnLocation.position + new Vector3(0, 0.2f, 0), currentSpawnLocation.position - new Vector3(0, 0.2f, 0), 0.2f, enemyCollisionMask)) {
-            if (spawnLocations[randomNumber].childCount < enemiesSpawnLimitPerSpawnLocation) {
-                GameObject enemy = Instantiate(enemyInstanciable, spawnLocations[randomNumber]);
-                enemy.SetActive(true);
+		if (!Physics.CheckCapsule(currentSpawnLocation.position + new Vector3(0, 0.2f, 0), currentSpawnLocation.position - new Vector3(0, 0.2f, 0), 0.2f, enemyCollisionMask)) {
+			if (spawnLocations[randomNumber].childCount < enemiesSpawnLimitPerSpawnLocation) {
+				GameObject enemy = Instantiate(enemyInstanciable, spawnLocations[randomNumber]);
+				enemy.SetActive(true);
 
-                enemiesToSpawn--;
-            }
-        }
+				enemiesToSpawn--;
+			}
+		}
 
         Invoke("PrepareNextEnemySpawn", (enemiesSpawnDelayInMiliseconds / 1000));
     }

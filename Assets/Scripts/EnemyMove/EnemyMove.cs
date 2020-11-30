@@ -25,8 +25,8 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Add some pseudocode to structure logic, for the 
-
+		// Add some pseudocode to structure logic, for the responding to detection and walking (partially) towards the player.
+		
         if (movingToPlayer)
         {
             agent.SetDestination(moveDirection.position);
