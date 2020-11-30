@@ -14,7 +14,7 @@ public class EnemyMove : MonoBehaviour
 
     public Transform moveDirection;
     public NavMeshAgent agent;
-    public bool movingToPlayer = true;
+    public bool followingGivenDirections = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +25,9 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		// Add some pseudocode to structure logic, for the responding to detection and walking (partially) towards the player.
-		
-        if (movingToPlayer)
+        // Add some pseudocode to structure logic, for the responding to detection and walking (partially) towards the player.
+
+        if (followingGivenDirections)
         {
             agent.SetDestination(moveDirection.position);
         }
