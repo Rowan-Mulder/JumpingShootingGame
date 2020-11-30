@@ -15985,7 +15985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDirection: {fileID: 104308570}
   agent: {fileID: 1516593618}
-  movingToPlayer: 0
+  followingGivenDirections: 0
 --- !u!136 &1516593621
 CapsuleCollider:
   m_ObjectHideFlags: 0
