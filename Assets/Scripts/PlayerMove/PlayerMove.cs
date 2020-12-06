@@ -45,6 +45,7 @@ public class PlayerMove : MonoBehaviour
     private float movingSpeed; // Calculated movement speed (walking into walls will affect this speed)
     Vector3 transformedMove;
     Vector3 respawnPoint;
+    public bool flightMode;
 
     public float speed;
     public float crouchingSpeed = 2.5f;
@@ -125,12 +126,14 @@ public class PlayerMove : MonoBehaviour
 
     void ApplyMovements()
     {
+        moveX = Input.GetAxis("Horizontal");
+        moveZ = Input.GetAxis("Vertical");
+
+        transformedMove = transform.right * moveX + transform.forward * moveZ;
+
         // Checks if standing on objects (that are of the selected LayerMask)
         isGrounded = Physics.CheckSphere(groundChecker.position, 0.1f, collisionMask);
         isConnectedToWall = Physics.CheckSphere(wallChecker.position, 0.11f, collisionMask);
-
-        moveX = Input.GetAxis("Horizontal");
-        moveZ = Input.GetAxis("Vertical");
 
         /*/ Experimental movement, building up speed
         if (moveZ > 0 && test1 < test2)
@@ -146,10 +149,7 @@ public class PlayerMove : MonoBehaviour
         // These experimental movements don't have support for moving backwards yet
         //*/
 
-        transformedMove = transform.right * moveX + transform.forward * moveZ;
-
-        if (isGrounded)
-        {
+        if (isGrounded) {
             /* Resets walljump limit
              * Resets fallingspeed
              * Resets velocity from last walljump
@@ -158,26 +158,20 @@ public class PlayerMove : MonoBehaviour
             consecutiveWalljumps = 0;
             velocity.y = -2f;
             wallJumpVelocity = Vector3.zero;
-        }
-        else
-        {
+        } else {
             transformedMove += wallJumpVelocity / 3;
         }
 
         // Crouching/Standing
-        if (Input.GetKey(KeyCode.LeftControl) && !isCrouching)
-        {
+        if (Input.GetKey(KeyCode.LeftControl) && !isCrouching) {
             isCrouching = true;
-            controller.height = 1.3f;
+            controller.height = 1.1f;
             controller.center = new Vector3(0, (controller.height / 2), 0);
             playerCamera.position = new Vector3(playerCamera.position.x, (firstPersonCameraPosition.position.y - 0.7f), playerCamera.position.z);
-        }
-        else if (!Input.GetKey(KeyCode.LeftControl) && isCrouching)
-        {
+        } else if (!Input.GetKey(KeyCode.LeftControl) && isCrouching) {
             CharacterCapsule();
 
-            if (!Physics.CheckCapsule(characterCapsuleStart, characterCapsuleEnd, controller.radius, collisionMask))
-            {
+            if (!Physics.CheckCapsule(characterCapsuleStart, characterCapsuleEnd, controller.radius, collisionMask)) {
                 isCrouching = false;
                 controller.height = 2.0f;
                 controller.center = new Vector3(0, (controller.height / 2), 0);
@@ -192,92 +186,99 @@ public class PlayerMove : MonoBehaviour
         bool standingStill = false;
 
         // 0.04 due to idle animation never triggered due to Unity not dealing with controller thumbstick deadzones.
-        if (moveX > 0.04)
-        {
+        if (moveX > 0.04) {
             movingRight = true;
-        }
-        else if (moveX < -0.04)
-        {
+        } else if (moveX < -0.04) {
             movingLeft = true;
         }
 
-        if (moveZ > 0.04)
-        {
+        if (moveZ > 0.04) {
             movingForwards = true;
-        }
-        else if (moveZ < -0.04)
-        {
+        } else if (moveZ < -0.04) {
             movingBackwards = true;
         }
 
-        if (!movingForwards && !movingBackwards && !movingLeft && !movingRight)
-        {
+        if (!movingForwards && !movingBackwards && !movingLeft && !movingRight) {
             standingStill = true;
         }
 
+        //*/ Flying around the scene - Meant for playtesting.
+        if (Input.GetKeyDown(KeyCode.F)) {
+            if (flightMode) {
+                flightMode = false;
+            } else {
+                flightMode = true;
+            }
+        }
+
+        if (flightMode) {
+            if (movingForwards) {
+                controller.Move(playerCamera.forward * moveZ * speed * Time.deltaTime);
+            }
+            
+            if (movingBackwards) {
+                controller.Move(-playerCamera.forward * Math.Abs(moveZ) * speed * Time.deltaTime);
+            }
+
+            return;
+        }
+        //*/
+
         // ADDITIONAL_FEATURE: If crouching, slide instead?
         // Sprinting/Walking
-        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0)
-        {
+        if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0) {
             speed = runningSpeed;
             //test2 = 400;
 
-            if (movingForwards && isGrounded)
-            {
+            if (movingForwards && isGrounded) {
                 ChangeAnimationState(Animations.RunForward);
                 animator.speed = movingSpeed / runningSpeed;
             }
 
-            if (movingBackwards && isGrounded)
-            {
+            if (movingBackwards && isGrounded) {
                 ChangeAnimationState(Animations.RunBackward);
                 animator.speed = movingSpeed / runningSpeed;
             }
-        }
-        else if (isCrouching)
-        {
+        } else if (isCrouching) {
             speed = crouchingSpeed;
             //test2 = 100;
 
-            if (movingForwards && isGrounded)
-            {
+            if (movingForwards && isGrounded) {
                 //ChangeAnimationState(Animations.CrouchForward);
                 animator.speed = movingSpeed / crouchingSpeed;
             }
 
-            if (movingBackwards && isGrounded)
-            {
+            if (movingBackwards && isGrounded) {
                 //ChangeAnimationState(Animations.CrouchBackward);
                 animator.speed = movingSpeed / crouchingSpeed;
             }
-        }
-        else
-        {
+        } else {
             speed = walkSpeed;
             //test2 = 200;
 
-            if (movingForwards && isGrounded)
-            {
+            if (movingForwards && isGrounded) {
                 ChangeAnimationState(Animations.WalkForward);
                 animator.speed = movingSpeed / walkSpeed;
             }
 
-            if (movingBackwards && isGrounded)
-            {
+            if (movingBackwards && isGrounded) {
                 ChangeAnimationState(Animations.WalkBackward);
                 animator.speed = movingSpeed / walkSpeed;
             }
         }
 
         // Will not idle if specific animations should finish first (using Invoke()). This only applies to full animations, not partial animations (like moving an arm).
-        if (standingStill && isGrounded && !haltedAnimations)
-        {
+        if (standingStill && isGrounded && !haltedAnimations) {
             // ADDITIONAL_FEATURE: Random idle animations, using animator.GetCurrentAnimatorStateInfo(0).length to determine when an idle animation has finished to activate a new one when still idle.
-            ChangeAnimationState(Animations.Idle);
+
+            if (!isCrouching) {
+                ChangeAnimationState(Animations.Idle);
+            } else {
+                //ChangeAnimationState(Animations.IdleCrouch);
+            }
         }
 
-        if (!isGrounded && jumpState == 0)
-        {
+        if (!isGrounded && jumpState == 0) {
             //ChangeAnimationState("Falling");
             //animator.speed = Math.Abs(velocity.y) / fallingSpeedLimit;
         }
@@ -288,19 +289,15 @@ public class PlayerMove : MonoBehaviour
         if (isGrounded && jumpState == 1 && !autoJumping)
             jumpState = 2;
 
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (isGrounded && jumpState < 2)
-            {
+        if (Input.GetKey(KeyCode.Space)) {
+            if (isGrounded && jumpState < 2) {
                 // Regular jump
                 // ADDITIONAL_FEATURE: The longer it's held, the higher your jump will be.
                 // INFO: This is triggered between 10 and 20 times on initial jump, then once each reoccuring jump (might be a bug, but it's not a problem yet). Limiting the initial jump to 1 makes the jump extremely weak.
                 
                 Jump();
                 jumpState = 1;
-            }
-            else if (isConnectedToWall && consecutiveWalljumps < walljumpLimit && jumpState == 0)
-            {
+            } else if (isConnectedToWall && consecutiveWalljumps < walljumpLimit && jumpState == 0) {
                 // Wall jump
                 // ADDITIONAL_FEATURE: When autojumping is enabled and jump peak has been reached, schedule next walljump for when isConnectedToWall is true and isGrounded hasn't been true until then. (Could use wallJumpState like jumpState?)
 
@@ -349,8 +346,7 @@ public class PlayerMove : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(wallChecker.position, transformedMove, out hit))
-        {
+        if (Physics.Raycast(wallChecker.position, transformedMove, out hit)) {
             var reflectedDirection = Vector3.Reflect(transformedMove, hit.normal);
             wallJumpVelocity = reflectedDirection * 2;
         }
@@ -374,8 +370,7 @@ public class PlayerMove : MonoBehaviour
     {
         string newAnimationState = animation.ToString();
 
-        if (currentAnimationState != newAnimationState)
-        {
+        if (currentAnimationState != newAnimationState) {
             animator.speed = 1.0f;
             animator.Play(newAnimationState);
             currentAnimationState = newAnimationState;
@@ -387,15 +382,11 @@ public class PlayerMove : MonoBehaviour
     {
         bool continues = true;
 
-        for (int i = 0; continues; i++)
-        {
-            try
-            {
+        for (int i = 0; continues; i++) {
+            try {
                 animatorParameters.Add(animator.GetParameter(i).name, i);
                 //Debug.Log("ADDED     Name:" + animator.GetParameter(i).name + " Index:" + i);
-            }
-            catch (IndexOutOfRangeException)
-            {
+            } catch (IndexOutOfRangeException) {
                 continues = false;
             }
         }
@@ -406,8 +397,7 @@ public class PlayerMove : MonoBehaviour
     {
         GUI.color = UnityEngine.Color.black;
         
-        for (int i = 0; i < debugInfo.Length; i++)
-        {
+        for (int i = 0; i < debugInfo.Length; i++) {
             GUI.Label(new Rect(140, 100 + (i * 15), 200, 25), debugInfo[i]);
         }
     }
