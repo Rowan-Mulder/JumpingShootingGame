@@ -25,8 +25,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void Damage(int damage)
     {
-        if ((currentHealthpoints -= damage) <= 0)
-        {
+        if ((currentHealthpoints -= damage) <= 0) {
             currentHealthpoints = 0;
             Death();
         }

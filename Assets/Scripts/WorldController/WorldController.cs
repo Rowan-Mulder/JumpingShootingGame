@@ -26,8 +26,7 @@ public class WorldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemiesReadyToSpawn && enemiesToSpawn > 0)
-        {
+        if (enemiesReadyToSpawn && enemiesToSpawn > 0) {
             SpawnEnemy();
         }
     }
@@ -45,6 +44,7 @@ public class WorldController : MonoBehaviour
 				enemy.SetActive(true);
                 enemiesToSpawn--;
                 // Enemy will spawn wether in sight of the player or not. Only easy way to check if enemy would be in sight is when it is already spawned, which makes its MeshRenderer.isVisible true. A bodge fix may be done where materials are invisible, but I'd rather leave it as is for now.
+		        // Perhaps try this: https://forum.unity.com/threads/making-object-invisible.498089/
             }
 		}
 

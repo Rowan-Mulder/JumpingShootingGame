@@ -48,8 +48,7 @@ public class PlayerLook : MonoBehaviour
         // Applies the yRotation to the entire player.
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
 
-        if (aimingWeapon)
-        {
+        if (aimingWeapon) {
             //*/ Pistol aiming
                 // Applies the xRotation to the player's global lower arm.
                 playerUpperArmGlobal.localRotation = playerUpperArmGlobalRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
@@ -75,8 +74,7 @@ public class PlayerLook : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 
-        switch (mouseInvertX)
-        {
+        switch (mouseInvertX) {
             case true:
                 yRotation -= mouseX;
                 break;
@@ -85,8 +83,7 @@ public class PlayerLook : MonoBehaviour
                 break;
         }
 
-        switch (mouseInvertY)
-        {
+        switch (mouseInvertY) {
             case true:
                 xRotation += mouseY;
                 break;
