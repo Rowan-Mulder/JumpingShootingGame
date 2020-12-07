@@ -29,7 +29,8 @@ public class PlayerMove : MonoBehaviour
     ///         Also make sure the given radius in the CheckSphere() then matches the radius of the CharacterController.
     /// </summary>
 
-    public Animator animator;
+    public Animator animatorGlobal; // Global animations
+    public Animator animatorLocal; // Local (shadow-only) animations
     public string currentAnimationState;
     readonly Dictionary<string, int> animatorParameters = new Dictionary<string, int>();
     
@@ -202,28 +203,6 @@ public class PlayerMove : MonoBehaviour
             standingStill = true;
         }
 
-        //*/ Flying around the scene - Meant for playtesting.
-        if (Input.GetKeyDown(KeyCode.F)) {
-            if (flightMode) {
-                flightMode = false;
-            } else {
-                flightMode = true;
-            }
-        }
-
-        if (flightMode) {
-            if (movingForwards) {
-                controller.Move(playerCamera.forward * moveZ * speed * Time.deltaTime);
-            }
-            
-            if (movingBackwards) {
-                controller.Move(-playerCamera.forward * Math.Abs(moveZ) * speed * Time.deltaTime);
-            }
-
-            return;
-        }
-        //*/
-
         // ADDITIONAL_FEATURE: If crouching, slide instead?
         // Sprinting/Walking
         if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0) {
@@ -232,12 +211,14 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded) {
                 ChangeAnimationState(Animations.RunForward);
-                animator.speed = movingSpeed / runningSpeed;
+                animatorGlobal.speed = movingSpeed / runningSpeed;
+                animatorLocal.speed = movingSpeed / runningSpeed;
             }
 
             if (movingBackwards && isGrounded) {
                 ChangeAnimationState(Animations.RunBackward);
-                animator.speed = movingSpeed / runningSpeed;
+                animatorGlobal.speed = movingSpeed / runningSpeed;
+                animatorLocal.speed = movingSpeed / runningSpeed;
             }
         } else if (isCrouching) {
             speed = crouchingSpeed;
@@ -245,12 +226,14 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded) {
                 //ChangeAnimationState(Animations.CrouchForward);
-                animator.speed = movingSpeed / crouchingSpeed;
+                animatorGlobal.speed = movingSpeed / crouchingSpeed;
+                animatorLocal.speed = movingSpeed / crouchingSpeed;
             }
 
             if (movingBackwards && isGrounded) {
                 //ChangeAnimationState(Animations.CrouchBackward);
-                animator.speed = movingSpeed / crouchingSpeed;
+                animatorGlobal.speed = movingSpeed / crouchingSpeed;
+                animatorLocal.speed = movingSpeed / crouchingSpeed;
             }
         } else {
             speed = walkSpeed;
@@ -258,14 +241,48 @@ public class PlayerMove : MonoBehaviour
 
             if (movingForwards && isGrounded) {
                 ChangeAnimationState(Animations.WalkForward);
-                animator.speed = movingSpeed / walkSpeed;
+                animatorGlobal.speed = movingSpeed / walkSpeed;
+                animatorLocal.speed = movingSpeed / walkSpeed;
             }
 
             if (movingBackwards && isGrounded) {
                 ChangeAnimationState(Animations.WalkBackward);
-                animator.speed = movingSpeed / walkSpeed;
+                animatorGlobal.speed = movingSpeed / walkSpeed;
+                animatorLocal.speed = movingSpeed / walkSpeed;
             }
         }
+
+        //*/ Flying around the scene - Meant for playtesting.
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (flightMode)
+            {
+                velocity.y = -2f;
+                flightMode = false;
+            }
+            else
+            {
+                flightMode = true;
+            }
+        }
+
+        if (flightMode)
+        {
+            if (movingForwards)
+                controller.Move(playerCamera.forward * moveZ * speed * Time.deltaTime);
+
+            if (movingBackwards)
+                controller.Move(-playerCamera.forward * Math.Abs(moveZ) * speed * Time.deltaTime);
+
+            if (movingLeft)
+                controller.Move(new Vector3(transformedMove.x, transformedMove.y, transformedMove.z) * speed * Time.deltaTime);
+
+            if (movingRight)
+                controller.Move(new Vector3(transformedMove.x, transformedMove.y, transformedMove.z) * speed * Time.deltaTime);
+
+            return;
+        }
+        //*/
 
         // Will not idle if specific animations should finish first (using Invoke()). This only applies to full animations, not partial animations (like moving an arm).
         if (standingStill && isGrounded && !haltedAnimations) {
@@ -371,8 +388,10 @@ public class PlayerMove : MonoBehaviour
         string newAnimationState = animation.ToString();
 
         if (currentAnimationState != newAnimationState) {
-            animator.speed = 1.0f;
-            animator.Play(newAnimationState);
+            animatorGlobal.speed = 1.0f;
+            animatorLocal.speed = 1.0f;
+            animatorGlobal.Play(newAnimationState);
+            animatorLocal.Play(newAnimationState);
             currentAnimationState = newAnimationState;
         }
     }
