@@ -11,6 +11,7 @@ public class PlayerShoot : MonoBehaviour
     //public int decalLimit = 50;
     public bool readyToFire = true;
     public ParticleSystem muzzleFlashPistolCamera;
+    public ParticleSystem muzzleFlashPistolLocal;
     public ParticleSystem muzzleFlashPistolGlobal;
     public GameObject gunDecal;
     public LayerMask canShootAt;
@@ -36,6 +37,7 @@ public class PlayerShoot : MonoBehaviour
     void Shoot()
     {
         muzzleFlashPistolCamera.Play();
+        muzzleFlashPistolLocal.Play();
         muzzleFlashPistolGlobal.Play();
 
         ammunition--;
