@@ -69,21 +69,6 @@
   - ~~Gebruik een Enumerator/Dictionary (hash array) voor alle constante animatie namen en call de animatie met behulp hiervan.~~
   - ~~Kijk voor animation blending (Besloten dit niet te doen. Uiteindelijk misschien de niet-scripted methode gebruiken, maar dit zal veel tijd kosten)~~
 
-- [ ] **Animaties maken**
-* ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
-* ~~Idle~~
-* Jump
-* Falling
-* Land
-* ~~WalkForward~~
-* WalkBackward
-* WalkLeft
-* WalkRight
-* ~~RunForward~~
-* RunBackward
-* RunLeft
-* RunRight
-
 - [x] ~~**Crouching**~~
   - ~~Bij crouching (LEFT_SHIFT), maak de Character Controller height (direct) lager.~~
   - ~~Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.~~
@@ -96,6 +81,21 @@
     - Zo ja, reageert het niet of minder snel op de speler.
     - Zo niet, loopt het richting de speler.
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
+
+- [ ] **Animaties maken**
+* ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
+* ~~Idle~~
+* Jump
+* Falling
+* Land
+* ~~WalkForward~~
+* ~~WalkBackward~~
+* WalkLeft
+* WalkRight
+* ~~RunForward~~
+* ~~RunBackward~~
+* RunLeft
+* RunRight
 
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
@@ -127,8 +127,6 @@
 - [ ] **Meer animaties maken**
 * DeathFromFalling
 * DeathFromBullet
-- ShootGun
-  - *Een aparte animatie voor iedere gun?*
 
 <br><br><br>
 ---
