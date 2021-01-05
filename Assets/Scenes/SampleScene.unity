@@ -1008,6 +1008,10 @@ MonoBehaviour:
   canShootAt:
     serializedVersion: 2
     m_Bits: 32769
+  enemies:
+    serializedVersion: 2
+    m_Bits: 32768
+  hearingDistanceShooting: 10
   playerHealth: {fileID: 104308575}
 --- !u!114 &104308575
 MonoBehaviour:
