@@ -15,6 +15,8 @@ public class PlayerShoot : MonoBehaviour
     public ParticleSystem muzzleFlashPistolGlobal;
     public GameObject gunDecal;
     public LayerMask canShootAt;
+    public LayerMask enemies;
+    public float hearingDistanceShooting = 10f;
 
     public PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;
@@ -23,15 +25,14 @@ public class PlayerShoot : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            if (ammunition > 0) {
+            if (ammunition > 0)
                 Shoot();
-            }
+			
             readyToFire = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0)) {
+        if (Input.GetKeyUp(KeyCode.Mouse0))
             readyToFire = true;
-        }
     }
 
     void Shoot()
@@ -55,6 +56,21 @@ public class PlayerShoot : MonoBehaviour
                 particle.SetActive(true);
                 Destroy(particle, 60f);
             }
+        }
+		
+		// STARTED WORKING ON SHOOTING NOISE
+		//     enemies will be informed from the source of the gunfire
+		
+        //if (Physics.CheckSphere(transform.position, hearingDistanceShooting, enemies))
+        //{
+
+        //}
+
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, hearingDistanceShooting, Vector3.forward, enemies);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            RaycastHit asd = hits[i];
+            Debug.Log(asd);
         }
     }
 }
