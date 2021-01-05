@@ -264,8 +264,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //*/ Flying around the scene - Meant for playtesting.
-        if (Input.GetKeyDown(KeyCode.F))
-        {
+        if (Input.GetKeyDown(KeyCode.F)) {
             if (flightMode) {
                 velocity.y = -2f;
                 flightMode = false;
