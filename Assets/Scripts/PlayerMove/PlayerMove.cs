@@ -82,10 +82,25 @@ public class PlayerMove : MonoBehaviour
     {
         Idle,
         WalkForward,
-        RunForward,
         WalkBackward,
-        RunBackward
-		// Note when adding animations and all (or some) animations are not displayed: Save the model. Export the model to .fbx with the right settings. Add the animations, set them to the right time and loop them if required. In the animator, add new animations and make sure old animations are still linked.
+        WalkRight,
+        RunForward,
+        RunBackward,
+        // Note when adding animations and all (or some) animations are not displayed: Save the model. Export the model to .fbx with the right settings. Add the animations, set them to the right time and loop them if required. In the animator, add new animations and make sure old animations are still linked.
+        /*  To add an animation:
+         *      Blender:
+         *          Dope Sheet -> Action Editor
+         *              New Action
+         *          Save both as project and as .fbx (default export settings seem fine for now)
+         *      Unity:
+         *          In the Hierarchy, open the inspector of 'PlayerModel global' from the 'Player' object
+         *              
+         *      C#:
+         *          PlayerMove.cs
+         *              Add the animation to the enumeration
+         *              Uncomment or write the logic
+         *                  ChangeAnimationState()
+         */
     };
 
     // Initialises base elements
@@ -159,9 +174,8 @@ public class PlayerMove : MonoBehaviour
             consecutiveWalljumps = 0;
             velocity.y = -2f;
             wallJumpVelocity = Vector3.zero;
-        } else {
+        } else
             transformedMove += wallJumpVelocity / 3;
-        }
 
         // Crouching/Standing
         if (Input.GetKey(KeyCode.LeftControl) && !isCrouching) {
@@ -187,87 +201,79 @@ public class PlayerMove : MonoBehaviour
         bool standingStill = false;
 
         // 0.04 due to idle animation never triggered due to Unity not dealing with controller thumbstick deadzones.
-        if (moveX > 0.04) {
+        if (moveX > 0.04)
             movingRight = true;
-        } else if (moveX < -0.04) {
+        else if (moveX < -0.04)
             movingLeft = true;
-        }
 
-        if (moveZ > 0.04) {
+        if (moveZ > 0.04)
             movingForwards = true;
-        } else if (moveZ < -0.04) {
+        else if (moveZ < -0.04)
             movingBackwards = true;
-        }
 
-        if (!movingForwards && !movingBackwards && !movingLeft && !movingRight) {
+        if (!movingForwards && !movingBackwards && !movingLeft && !movingRight)
             standingStill = true;
-        }
 
         // ADDITIONAL_FEATURE: If crouching, slide instead?
-        // Sprinting/Walking
         if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0) {
+            // Sprinting
             speed = runningSpeed;
             //test2 = 400;
 
-            if (movingForwards && isGrounded) {
-                ChangeAnimationState(Animations.RunForward);
-                animatorGlobal.speed = movingSpeed / runningSpeed;
-                animatorLocal.speed = movingSpeed / runningSpeed;
-            }
+            if (!movingRight && !movingLeft) {
+                if (movingForwards && isGrounded)
+                    ChangeAnimationState(Animations.RunForward);
 
-            if (movingBackwards && isGrounded) {
-                ChangeAnimationState(Animations.RunBackward);
-                animatorGlobal.speed = movingSpeed / runningSpeed;
-                animatorLocal.speed = movingSpeed / runningSpeed;
+                if (movingBackwards && isGrounded)
+                    ChangeAnimationState(Animations.RunBackward);
+            } else {
+                //if (movingLeft)
+                    //Animate(Animations.RunLeft);
+
+                //if (movingRight)
+                    //Animate(Animations.RunRight);
             }
         } else if (isCrouching) {
+            // Crouching
             speed = crouchingSpeed;
             //test2 = 100;
 
-            if (movingForwards && isGrounded) {
-                //ChangeAnimationState(Animations.CrouchForward);
-                animatorGlobal.speed = movingSpeed / crouchingSpeed;
-                animatorLocal.speed = movingSpeed / crouchingSpeed;
-            }
+            //if (movingForwards && isGrounded)
+                //Animate(Animations.CrouchForward);
 
-            if (movingBackwards && isGrounded) {
-                //ChangeAnimationState(Animations.CrouchBackward);
-                animatorGlobal.speed = movingSpeed / crouchingSpeed;
-                animatorLocal.speed = movingSpeed / crouchingSpeed;
-            }
+            //if (movingBackwards && isGrounded)
+                //Animate(Animations.CrouchBackward);
         } else {
+            // Walking
             speed = walkSpeed;
             //test2 = 200;
 
-            if (movingForwards && isGrounded) {
-                ChangeAnimationState(Animations.WalkForward);
-                animatorGlobal.speed = movingSpeed / walkSpeed;
-                animatorLocal.speed = movingSpeed / walkSpeed;
-            }
+            if (!movingRight && !movingLeft) {
+                if (movingForwards && isGrounded)
+                    ChangeAnimationState(Animations.WalkForward);
 
-            if (movingBackwards && isGrounded) {
-                ChangeAnimationState(Animations.WalkBackward);
-                animatorGlobal.speed = movingSpeed / walkSpeed;
-                animatorLocal.speed = movingSpeed / walkSpeed;
+                if (movingBackwards && isGrounded)
+                    ChangeAnimationState(Animations.WalkBackward);
+            } else {
+                //if (movingLeft)
+                    //Animate(Animations.WalkLeft);
+
+                if (movingRight)
+                    ChangeAnimationState(Animations.WalkRight);
             }
         }
 
         //*/ Flying around the scene - Meant for playtesting.
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (flightMode)
-            {
+            if (flightMode) {
                 velocity.y = -2f;
                 flightMode = false;
-            }
-            else
-            {
+            } else
                 flightMode = true;
-            }
         }
 
-        if (flightMode)
-        {
+        if (flightMode) {
             if (movingForwards)
                 controller.Move(playerCamera.forward * moveZ * speed * Time.deltaTime);
 
@@ -288,11 +294,10 @@ public class PlayerMove : MonoBehaviour
         if (standingStill && isGrounded && !haltedAnimations) {
             // ADDITIONAL_FEATURE: Random idle animations, using animator.GetCurrentAnimatorStateInfo(0).length to determine when an idle animation has finished to activate a new one when still idle.
 
-            if (!isCrouching) {
+            if (!isCrouching)
                 ChangeAnimationState(Animations.Idle);
-            } else {
-                //ChangeAnimationState(Animations.IdleCrouch);
-            }
+            //else
+                //Animate(Animations.IdleCrouch);
         }
 
         if (!isGrounded && jumpState == 0) {
@@ -385,6 +390,35 @@ public class PlayerMove : MonoBehaviour
     // Activeert animaties voor het huidige object met dit script. Voor uitvoering van animaties na een bepaalde tijd, gebruik: Invoke("SomeMethodWithoutUsingParams", 0.5f);
     public void ChangeAnimationState(Animations animation)
     {
+        switch (animation) {
+            case Animations.WalkForward:
+            case Animations.WalkBackward:
+            case Animations.WalkRight:
+            //case Animations.WalkLeft:
+                animatorGlobal.speed = movingSpeed / walkSpeed;
+                animatorLocal.speed = movingSpeed / walkSpeed;
+                break;
+            case Animations.RunForward:
+            case Animations.RunBackward:
+            //case Animations.RunRight:
+            //case Animations.RunLeft:
+                animatorGlobal.speed = movingSpeed / runningSpeed;
+                animatorLocal.speed = movingSpeed / runningSpeed;
+                break;
+            //case Animations.CrouchForward:
+            //case Animations.CrouchBackward:
+            //case Animations.CrouchRight:
+            //case Animations.CrouchLeft:
+            //animatorGlobal.speed = movingSpeed / crouchingSpeed;
+            //animatorLocal.speed = movingSpeed / crouchingSpeed;
+            //break;
+            case Animations.Idle:
+                break;
+            default:
+                Debug.Log($"ChangeAnimationState() couldn't handle animation: \"{animation}\"");
+                break;
+        }
+
         string newAnimationState = animation.ToString();
 
         if (currentAnimationState != newAnimationState) {
@@ -416,8 +450,7 @@ public class PlayerMove : MonoBehaviour
     {
         GUI.color = UnityEngine.Color.black;
         
-        for (int i = 0; i < debugInfo.Length; i++) {
+        for (int i = 0; i < debugInfo.Length; i++)
             GUI.Label(new Rect(140, 100 + (i * 15), 200, 25), debugInfo[i]);
-        }
     }
 }
