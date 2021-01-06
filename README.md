@@ -74,7 +74,7 @@
   - ~~Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.~~
     - ~~Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.~~
 
-- [ ] ~~**Globale Player Shadows**
+- [ ] **Globale Player Shadows**
   - ~~Globale shadows werken lokaal niet omdat het globale object lokaal niet gerenderd mag worden.~~
     - ~~De oplossing was om een apart model te hebben, wat specifiek lokaal zichtbaar is, maar volledig transparant is.~~
       - Het zou beter zijn als dit model ook de globale schaduw berekend, dan gebeurt er geen dubbel werk. Zet hiervoor schaduw uit van het globale object en verander de layer naar general voor het schaduw object.
