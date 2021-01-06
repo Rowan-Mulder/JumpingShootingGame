@@ -93,8 +93,9 @@ public class PlayerMove : MonoBehaviour
          *              New Action
          *          Save both as project and as .fbx (default export settings seem fine for now)
          *      Unity:
-         *          In the Hierarchy, open the inspector of 'PlayerModel global' from the 'Player' object
-         *              
+         *          In the Hierarchy, open the inspector of 'PlayerModel global' from the 'Player' object and press Select
+         *              Inside the Animation tab, add a new clip, choose the right Source Take, choose if the animation should loop or not, clamp the keys if needed and rename the clip to your likings.
+         *          Drag the new animation from the .fbx file inside the PlayerAnimationController Animator and set the right speed, usually 2
          *      C#:
          *          PlayerMove.cs
          *              Add the animation to the enumeration
