@@ -74,16 +74,22 @@
   - ~~Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.~~
     - ~~Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.~~
 
+- [ ] ~~**Globale Player Shadows**
+  - ~~Globale shadows werken lokaal niet omdat het globale object lokaal niet gerenderd mag worden.~~
+    - ~~De oplossing was om een apart model te hebben, wat specifiek lokaal zichtbaar is, maar volledig transparant is.~~
+      - Het zou beter zijn als dit model ook de globale schaduw berekend, dan gebeurt er geen dubbel werk. Zet hiervoor schaduw uit van het globale object en verander de layer naar general voor het schaduw object.
+
 - [x] **Basis AI gebruiken/maken**
 - ~~Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn. (het is voldoende voor de basis)~~
 - Hoort de speler en ziet de speler binnen een bepaalde radius.
-  - Gebruik raycasts om te zien of de speler achter een muur zit.
-    - Zo ja, reageert het niet of minder snel op de speler.
+  - Gebruikt raycasts vanuit PlayerShoot.cs om te zien of de speler achter een muur zit.
+    - Zo ja, reageert het niet of minder snel op de speler. (of is afhankelijk van de afstand tussen de AI en de speler, als deze info op te halen zou zijn. Achter een paal mag de AI wel reageren, maar in een huis niet.)
     - Zo niet, loopt het richting de speler.
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Animaties maken**
 * ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
+* Misschien is het beter om alleen RunForward toe te staan. Stel alle run animaties voorlopig uit.
 * ~~Idle~~
 * Jump
 * Falling
