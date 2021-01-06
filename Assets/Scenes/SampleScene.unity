@@ -944,10 +944,14 @@ MonoBehaviour:
   playerFirstPersonCamera: {fileID: 963194228}
   playerThirdPersonCamera: {fileID: 1812383865}
   playerNeckbone: {fileID: 921633952}
+  playerNeckboneShadow: {fileID: 1879739859}
   playerSpineGlobal: {fileID: 380457185}
+  playerSpineShadow: {fileID: 522676222}
   playerShoulderGlobal: {fileID: 2100635475}
+  playerShoulderShadow: {fileID: 1971893804}
   playerUpperArmGlobal: {fileID: 249232826}
   playerUpperArmLocal: {fileID: 1024125771}
+  playerUpperArmShadow: {fileID: 810942464}
 --- !u!114 &104308572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12684,6 +12688,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518332621}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &522676222 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8844204364281339845, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 1498483410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &556511333
 GameObject:
   m_ObjectHideFlags: 0
@@ -13348,6 +13357,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781190879}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &810942464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3151145808932864331, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 1498483410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &826953913
 GameObject:
   m_ObjectHideFlags: 0
@@ -31898,6 +31912,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1877977435}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1879739859 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7280332439454955553, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 1498483410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1903888871 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
@@ -32547,6 +32566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+--- !u!4 &1971893804 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7569250006640272649, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 1498483410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983069077
 GameObject:
   m_ObjectHideFlags: 0

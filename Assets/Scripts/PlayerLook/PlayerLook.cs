@@ -11,13 +11,20 @@ public class PlayerLook : MonoBehaviour
     public Transform playerFirstPersonCamera;
     public Transform playerThirdPersonCamera;
     public Transform playerNeckbone;
+    public Transform playerNeckboneShadow;
     public Transform playerSpineGlobal;
+    public Transform playerSpineShadow;
     public Transform playerShoulderGlobal;
+    public Transform playerShoulderShadow;
     public Transform playerUpperArmGlobal;
     public Transform playerUpperArmLocal;
+    public Transform playerUpperArmShadow;
     private Quaternion playerUpperArmGlobalRotation;
+    private Quaternion playerUpperArmShadowRotation;
     private Quaternion playerShoulderGlobalRotation;
+    private Quaternion playerShoulderShadowRotation;
     private Quaternion playerSpineGlobalRotation;
+    private Quaternion playerSpineShadowRotation;
     float xRotation = 0f;
     float yRotation = 0f;
     bool aimingWeapon = true;
@@ -29,8 +36,11 @@ public class PlayerLook : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         playerUpperArmGlobalRotation = playerUpperArmGlobal.localRotation;
+        playerUpperArmShadowRotation = playerUpperArmShadow.localRotation;
         playerShoulderGlobalRotation = playerShoulderGlobal.localRotation;
+        playerShoulderShadowRotation = playerShoulderShadow.localRotation;
         playerSpineGlobalRotation = playerSpineGlobal.localRotation;
+        playerSpineShadowRotation = playerSpineShadow.localRotation;
     }
 
     // Update is called once per frame
@@ -44,18 +54,22 @@ public class PlayerLook : MonoBehaviour
     {
         // Applies the xRotation to the player's neckbone.
         playerNeckbone.localRotation = Quaternion.Euler(0f, 0f, xRotation);
+        playerNeckboneShadow.localRotation = Quaternion.Euler(0f, 0f, xRotation);
 
         // Applies the yRotation to the entire player.
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
 
         if (aimingWeapon) {
             //*/ Pistol aiming
-                // Applies the xRotation to the player's global lower arm.
+                // Applies the xRotation to the player's lower arm.
                 playerUpperArmGlobal.localRotation = playerUpperArmGlobalRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
+                playerUpperArmShadow.localRotation = playerUpperArmShadowRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
 
                 // Stops animating specific bodyparts for a more steady aim.
                 playerShoulderGlobal.localRotation = playerShoulderGlobalRotation;
+                playerShoulderShadow.localRotation = playerShoulderShadowRotation;
                 playerSpineGlobal.localRotation = playerSpineGlobalRotation;
+                playerSpineShadow.localRotation = playerSpineShadowRotation;
             //*/
 
             /*/ RPG aiming (example)
