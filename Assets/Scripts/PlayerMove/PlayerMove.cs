@@ -28,6 +28,7 @@ public class PlayerMove : MonoBehaviour
     ///             (so it won't touch the walls, but it will touch the ground for only the first frame of a jump).
     ///         Also make sure the given radius in the CheckSphere() then matches the radius of the CharacterController.
     /// </summary>
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
 
     public Animator animatorGlobal; // Global animations
     public Animator animatorLocal; // Local (shadow-only) animations
@@ -46,6 +47,7 @@ public class PlayerMove : MonoBehaviour
     private float movingSpeed; // Calculated movement speed (walking into walls will affect this speed)
     Vector3 transformedMove;
     Vector3 respawnPoint;
+    public bool developerMode = true;
     public bool flightMode;
 
     public float speed;
@@ -76,21 +78,22 @@ public class PlayerMove : MonoBehaviour
     Vector3 wallJumpVelocity;
     //float test1 = 0;
     //float test2 = 200;
-
+    
     public bool haltedAnimations = false;
     public enum Animations
     {
         Idle,
         WalkForward,
         WalkBackward,
+        WalkLeft,
         WalkRight,
         RunForward,
-        RunBackward,
         // Note when adding animations and all (or some) animations are not displayed: Save the model. Export the model to .fbx with the right settings. Add the animations, set them to the right time and loop them if required. In the animator, add new animations and make sure old animations are still linked.
         /*  To add an animation:
          *      Blender:
          *          Dope Sheet -> Action Editor
          *              New Action
+         *          Select the first keyframe from the Idle animation just before saving
          *          Save both as project and as .fbx (default export settings seem fine for now)
          *      Unity:
          *          In the Hierarchy, open the inspector of 'PlayerModel global' from the 'Player' object and press Select
@@ -215,24 +218,38 @@ public class PlayerMove : MonoBehaviour
         if (!movingForwards && !movingBackwards && !movingLeft && !movingRight)
             standingStill = true;
 
-        // ADDITIONAL_FEATURE: If crouching, slide instead?
+        // ADDITIONAL_FEATURE: If crouching when sprinting, slide instead?
         if (Input.GetKey(KeyCode.LeftShift) && !isCrouching && consecutiveWalljumps == 0) {
-            // Sprinting
-            speed = runningSpeed;
-            //test2 = 400;
-
             if (!movingRight && !movingLeft) {
-                if (movingForwards && isGrounded)
+                if (movingForwards && isGrounded) {
+                    // Sprinting
+                    speed = runningSpeed;
+                    //test2 = 400;
                     ChangeAnimationState(Animations.RunForward);
+                }
 
-                if (movingBackwards && isGrounded)
-                    ChangeAnimationState(Animations.RunBackward);
+                if (movingBackwards && isGrounded) {
+                    // Walking
+                    speed = walkSpeed;
+                    //test2 = 200;
+                    ChangeAnimationState(Animations.WalkBackward);
+                }
             } else {
-                //if (movingLeft)
-                    //Animate(Animations.RunLeft);
+                if (movingForwards) {
+                    // Sprinting
+                    speed = runningSpeed;
+                    //test2 = 400;
+                } else {
+                    // Walking
+                    speed = walkSpeed;
+                    //test2 = 200;
+                }
 
-                //if (movingRight)
-                    //Animate(Animations.RunRight);
+                if (movingLeft)
+                    ChangeAnimationState(Animations.WalkLeft);
+
+                if (movingRight)
+                    ChangeAnimationState(Animations.WalkRight);
             }
         } else if (isCrouching) {
             // Crouching
@@ -240,10 +257,10 @@ public class PlayerMove : MonoBehaviour
             //test2 = 100;
 
             //if (movingForwards && isGrounded)
-                //Animate(Animations.CrouchForward);
+                //ChangeAnimationState(Animations.CrouchForward);
 
             //if (movingBackwards && isGrounded)
-                //Animate(Animations.CrouchBackward);
+                //ChangeAnimationState(Animations.CrouchBackward);
         } else {
             // Walking
             speed = walkSpeed;
@@ -256,8 +273,8 @@ public class PlayerMove : MonoBehaviour
                 if (movingBackwards && isGrounded)
                     ChangeAnimationState(Animations.WalkBackward);
             } else {
-                //if (movingLeft)
-                    //Animate(Animations.WalkLeft);
+                if (movingLeft)
+                    ChangeAnimationState(Animations.WalkLeft);
 
                 if (movingRight)
                     ChangeAnimationState(Animations.WalkRight);
@@ -265,7 +282,7 @@ public class PlayerMove : MonoBehaviour
         }
 
         //*/ Flying around the scene - Meant for playtesting.
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (developerMode && Input.GetKeyDown(KeyCode.F)) {
             if (flightMode) {
                 velocity.y = -2f;
                 flightMode = false;
@@ -366,9 +383,7 @@ public class PlayerMove : MonoBehaviour
 
     private void WallJump()
     {
-        RaycastHit hit;
-
-        if (Physics.Raycast(wallChecker.position, transformedMove, out hit)) {
+        if (Physics.Raycast(wallChecker.position, transformedMove, out RaycastHit hit)) {
             var reflectedDirection = Vector3.Reflect(transformedMove, hit.normal);
             wallJumpVelocity = reflectedDirection * 2;
         }
@@ -394,14 +409,11 @@ public class PlayerMove : MonoBehaviour
             case Animations.WalkForward:
             case Animations.WalkBackward:
             case Animations.WalkRight:
-            //case Animations.WalkLeft:
+            case Animations.WalkLeft:
                 animatorGlobal.speed = movingSpeed / walkSpeed;
                 animatorLocal.speed = movingSpeed / walkSpeed;
                 break;
             case Animations.RunForward:
-            case Animations.RunBackward:
-            //case Animations.RunRight:
-            //case Animations.RunLeft:
                 animatorGlobal.speed = movingSpeed / runningSpeed;
                 animatorLocal.speed = movingSpeed / runningSpeed;
                 break;
