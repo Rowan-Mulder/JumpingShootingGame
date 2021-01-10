@@ -14,14 +14,18 @@ public class PlayerLook : MonoBehaviour
     public Transform playerNeckboneShadow;
     public Transform playerSpineGlobal;
     public Transform playerSpineShadow;
-    public Transform playerShoulderGlobal;
-    public Transform playerShoulderShadow;
-    public Transform playerUpperArmGlobal;
     public Transform playerUpperArmLocal;
+    public Transform playerLowerArmGlobal;
+    public Transform playerUpperArmGlobal;
+    public Transform playerShoulderGlobal;
+    public Transform playerLowerArmShadow;
     public Transform playerUpperArmShadow;
+    public Transform playerShoulderShadow;
+    private Quaternion playerLowerArmGlobalRotation;
     private Quaternion playerUpperArmGlobalRotation;
-    private Quaternion playerUpperArmShadowRotation;
     private Quaternion playerShoulderGlobalRotation;
+    private Quaternion playerLowerArmShadowRotation;
+    private Quaternion playerUpperArmShadowRotation;
     private Quaternion playerShoulderShadowRotation;
     private Quaternion playerSpineGlobalRotation;
     private Quaternion playerSpineShadowRotation;
@@ -35,9 +39,11 @@ public class PlayerLook : MonoBehaviour
         // Lock the cursor in the center of the window
         Cursor.lockState = CursorLockMode.Locked;
 
+        playerLowerArmGlobalRotation = playerLowerArmGlobal.localRotation;
         playerUpperArmGlobalRotation = playerUpperArmGlobal.localRotation;
-        playerUpperArmShadowRotation = playerUpperArmShadow.localRotation;
         playerShoulderGlobalRotation = playerShoulderGlobal.localRotation;
+        playerLowerArmShadowRotation = playerLowerArmShadow.localRotation;
+        playerUpperArmShadowRotation = playerUpperArmShadow.localRotation;
         playerShoulderShadowRotation = playerShoulderShadow.localRotation;
         playerSpineGlobalRotation = playerSpineGlobal.localRotation;
         playerSpineShadowRotation = playerSpineShadow.localRotation;
@@ -66,19 +72,23 @@ public class PlayerLook : MonoBehaviour
                 playerUpperArmShadow.localRotation = playerUpperArmShadowRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
 
                 // Stops animating specific bodyparts for a more steady aim.
+                playerLowerArmGlobal.localRotation = playerLowerArmGlobalRotation;
                 playerShoulderGlobal.localRotation = playerShoulderGlobalRotation;
-                playerShoulderShadow.localRotation = playerShoulderShadowRotation;
                 playerSpineGlobal.localRotation = playerSpineGlobalRotation;
+                playerLowerArmShadow.localRotation = playerLowerArmShadowRotation;
+                playerShoulderShadow.localRotation = playerShoulderShadowRotation;
                 playerSpineShadow.localRotation = playerSpineShadowRotation;
             //*/
 
             /*/ RPG aiming (example)
                 // Applies the xRotation to the player's spine.
                 playerSpineGlobal.localRotation = playerSpineGlobalRotation * *Quaternion.Euler(0f, 0f + xRotation, 0f);
+                // Add Shadow here too
                 
-                //Stops animating specific bodyparts for a more steady aim.
+                // Stops animating specific bodyparts for a more steady aim.
                 playerUpperArmGlobal.localRotation = playerUpperArmGlobalRotation;
                 playerShoulderGlobal.localRotation = playerShoulderGlobalRotation;
+                // Add LowerArm and Shadow here too
             //*/
         }
     }
