@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+
     public int maxHealthpoints = 100;
     public int currentHealthpoints = 100;
     public Text TextHealthpoints;

@@ -11,6 +11,7 @@ public class EnemyMove : MonoBehaviour
     ///         Bij gebruik van custom Agent profielnamen (buiten default "Humanoid") moet je schijnbaar NavMeshSurface gebruiken. Makkelijker is om de standaard "Humanoid" Agent te gebruiken.
     ///         
     /// </summary>
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
 
     public Transform moveDirection;
     public NavMeshAgent agent;
@@ -27,8 +28,7 @@ public class EnemyMove : MonoBehaviour
     {
         // Add some pseudocode to structure logic, for the responding to detection and walking (partially) towards the player.
 
-        if (followingGivenDirections) {
+        if (followingGivenDirections)
             agent.SetDestination(moveDirection.position);
-        }
     }
 }

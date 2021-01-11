@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyColors : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+
     public new Renderer renderer;
 
     // Start is called before the first frame update
@@ -70,12 +72,11 @@ public class EnemyColors : MonoBehaviour
     {
         float leastSaturated = Mathf.Min(color1, color2, color3);
 
-        if (leastSaturated == color1) {
+        if (leastSaturated == color1)
             return 1;
-        } else if (leastSaturated == color2) {
+        else if (leastSaturated == color2)
             return 2;
-        } else {
+        else
             return 3;
-        }
     }
 }

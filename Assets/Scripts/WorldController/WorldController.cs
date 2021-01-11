@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WorldController : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+
     public GameObject enemyInstanciable;
     public int enemiesToSpawn = 10;
     public int enemiesSpawnLimit = 6;
@@ -26,9 +28,8 @@ public class WorldController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemiesReadyToSpawn && enemiesToSpawn > 0) {
+        if (enemiesReadyToSpawn && enemiesToSpawn > 0)
             SpawnEnemy();
-        }
     }
 
     void SpawnEnemy()
@@ -58,9 +59,8 @@ public class WorldController : MonoBehaviour
 
     int EnemyId()
     {
-        if (enemyId > 10000) {
+        if (enemyId > 10000)
             return enemyId = 1;
-        }
 
         return enemyId++;
     }

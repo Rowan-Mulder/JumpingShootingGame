@@ -5,6 +5,8 @@ using UnityEngine.Rendering;
 
 public class PlayerShoot : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+
     public Transform playerCamera;
     public int ammunition = 100;
     public float shootingDistance = 1000;
@@ -43,12 +45,10 @@ public class PlayerShoot : MonoBehaviour
 
         ammunition--;
 
-        RaycastHit hit;
-
         //Shoots from playerCamera, change to weaponMuzzle for VR/third-person
-        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out hit, shootingDistance, canShootAt))
-        {
-            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target") {
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, shootingDistance, canShootAt)) {
+            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target")
+            {
                 enemyHealth = (EnemyHealth)hit.collider.gameObject.GetComponent("EnemyHealth");
                 enemyHealth.Damage(1);
             } else {
@@ -57,10 +57,10 @@ public class PlayerShoot : MonoBehaviour
                 Destroy(particle, 60f);
             }
         }
-		
-		// STARTED WORKING ON SHOOTING NOISE
-		//     enemies will be informed from the source of the gunfire
-		
+
+        // STARTED WORKING ON SHOOTING NOISE
+        //     enemies will be informed from the source of the gunfire
+
         //if (Physics.CheckSphere(transform.position, hearingDistanceShooting, enemies))
         //{
 

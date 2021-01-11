@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+    
     public float mouseSensitivity = 5f;
     public bool mouseInvertX = false;
     public bool mouseInvertY = false;

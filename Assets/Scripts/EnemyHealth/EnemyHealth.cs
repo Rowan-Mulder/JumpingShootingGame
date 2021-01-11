@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
+
     public int maxHealthpoints = 10;
     public int currentHealthpoints = 10;
     public bool dead = false;
