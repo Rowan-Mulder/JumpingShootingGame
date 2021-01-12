@@ -81,6 +81,7 @@
 
 - [x] **Basis AI gebruiken/maken**
 - ~~Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn. (het is voldoende voor de basis)~~
+- Moeten niet spawnen in het zicht.
 - Hoort de speler en ziet de speler binnen een bepaalde radius.
   - Gebruikt raycasts vanuit PlayerShoot.cs om te zien of de speler achter een muur zit.
     - Zo ja, reageert het niet of minder snel op de speler. (of is afhankelijk van de afstand tussen de AI en de speler, als deze info op te halen zou zijn. Achter een paal mag de AI wel reageren, maar in een huis niet.)
@@ -88,24 +89,24 @@
   - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
 
 - [ ] **Animaties maken**
-* ~~Zoek op hoe meerdere animaties onder 1 rig kunnen worden opgeslagen in **Blender 2.8+**~~
-* Misschien is het beter om alleen RunForward toe te staan. Stel alle run animaties voorlopig uit.
 * ~~Idle~~
 * Jump
 * Falling
 * Land
 * ~~WalkForward~~
 * ~~WalkBackward~~
-* WalkLeft
-* WalkRight
+* ~~WalkLeft~~
+* ~~WalkRight~~
 * ~~RunForward~~
-* ~~RunBackward~~
-* RunLeft
-* RunRight
 
 - [ ] **Health script maken**
 * ~~Houd bij hoeveel health het object heeft~~
 * Het object wordt verwijderd bij 0hp of doet speciale handelingen bij uitzonderingen als enemies en players.
+
+- [ ] **Game wereld maken**
+- *Kijk hiervoor naar het gamedesign document*
+- Bepaal hier de spawnpoints van enemies
+- Breid WorldController.cs uit voor wat variatie in het spel
 
 <br><br><br>
 ---
