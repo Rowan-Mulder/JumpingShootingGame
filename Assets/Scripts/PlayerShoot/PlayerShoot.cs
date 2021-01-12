@@ -24,20 +24,20 @@ public class PlayerShoot : MonoBehaviour
     private EnemyHealth enemyHealth;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0)) {
-            if (ammunition > 0)
+        if (Input.GetAxis("Fire1") > 0.5) {
+            if (ammunition > 0 && readyToFire)
                 Shoot();
 			
             readyToFire = false;
         }
 
-        if (Input.GetKeyUp(KeyCode.Mouse0))
+        if (Input.GetAxis("Fire1") == 0)
             readyToFire = true;
     }
 
-    void Shoot()
+    private void Shoot()
     {
         muzzleFlashPistolCamera.Play();
         muzzleFlashPistolLocal.Play();
@@ -47,8 +47,7 @@ public class PlayerShoot : MonoBehaviour
 
         //Shoots from playerCamera, change to weaponMuzzle for VR/third-person
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, shootingDistance, canShootAt)) {
-            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target")
-            {
+            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target") {
                 enemyHealth = (EnemyHealth)hit.collider.gameObject.GetComponent("EnemyHealth");
                 enemyHealth.Damage(1);
             } else {
