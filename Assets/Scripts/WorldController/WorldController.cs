@@ -32,7 +32,7 @@ public class WorldController : MonoBehaviour
             SpawnEnemy();
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
         int randomNumber = Random.Range(0, spawnLocationsAmount);
         var currentSpawnLocation = spawnLocations[randomNumber];
@@ -52,12 +52,12 @@ public class WorldController : MonoBehaviour
         Invoke("PrepareNextEnemySpawn", (enemiesSpawnDelayInMiliseconds / 1000));
     }
 
-    void PrepareNextEnemySpawn()
+    private void PrepareNextEnemySpawn()
     {
         enemiesReadyToSpawn = true;
     }
 
-    int EnemyId()
+    private int EnemyId()
     {
         if (enemyId > 10000)
             return enemyId = 1;

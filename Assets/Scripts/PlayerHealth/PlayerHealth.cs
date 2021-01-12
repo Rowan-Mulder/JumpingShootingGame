@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealth();
     }
 
-    void UpdateHealth()
+    private void UpdateHealth()
     {
         TextHealthpoints.text = $"{currentHealthpoints}/{maxHealthpoints}";
         healthSlider.value = currentHealthpoints;
@@ -35,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealth();
     }
 
-    void Death()
+    private void Death()
     {
         // Wait 5 seconds before reset to last checkpoint
         // Display some UI?
@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
         dead = true;
     }
 
-    void Revive()
+    public void Revive()
     {
         dead = false;
         currentHealthpoints = maxHealthpoints;

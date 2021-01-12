@@ -27,7 +27,7 @@ public class EnemyColors : MonoBehaviour
         }
     }
 
-    Color Saturate(Color unsaturatedColor)
+    private Color Saturate(Color unsaturatedColor)
     {
         // Note: range of RGB colors are between 0 and 1.
         Color saturatedColor = new Color();
@@ -68,7 +68,7 @@ public class EnemyColors : MonoBehaviour
         return saturatedColor;
     }
 
-    int LeastSaturatedColor(float color1 = 1, float color2 = 1, float color3 = 1)
+    private int LeastSaturatedColor(float color1 = 1, float color2 = 1, float color3 = 1)
     {
         float leastSaturated = Mathf.Min(color1, color2, color3);
 

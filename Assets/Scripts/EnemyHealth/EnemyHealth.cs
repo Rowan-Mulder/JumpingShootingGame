@@ -38,7 +38,7 @@ public class EnemyHealth : MonoBehaviour
         UpdateHealth();
     }
 
-    void Death()
+    private void Death()
     {
         // Activate death animation and destroy current object after some time for performance?
 
