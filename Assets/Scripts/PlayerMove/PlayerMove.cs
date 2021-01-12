@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
     };
 
     // Initialises base elements
-    private void Awake()
+    void Awake()
     {
         respawnPoint = transform.position; // This can be updated to be used for a checkpoint system.
         ChangeAnimationState(Animations.Idle);
@@ -121,7 +121,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     // Draws some information to the screen for debugging purposes.
-    private void OnGUI()
+    void OnGUI()
     {
         /*/ Only enable when absolutely required for debugging.
         GUIDebuggingInfo(new string[] {
@@ -204,15 +204,15 @@ public class PlayerMove : MonoBehaviour
         bool movingBackwards = false;
         bool standingStill = false;
 
-        // 0.04 due to idle animation never triggered due to Unity not dealing with controller thumbstick deadzones.
-        if (moveX > 0.04)
+        //  For controllers, note that thumbstick deadzones are set to 0.2, defined in Unity's input manager.
+        if (moveX > 0.2)
             movingRight = true;
-        else if (moveX < -0.04)
+        else if (moveX < -0.2)
             movingLeft = true;
 
-        if (moveZ > 0.04)
+        if (moveZ > 0.2)
             movingForwards = true;
-        else if (moveZ < -0.04)
+        else if (moveZ < -0.2)
             movingBackwards = true;
 
         if (!movingForwards && !movingBackwards && !movingLeft && !movingRight)
@@ -322,13 +322,13 @@ public class PlayerMove : MonoBehaviour
             //animator.speed = Math.Abs(velocity.y) / fallingSpeedLimit;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetButtonUp("Jump"))
             jumpState = 0;
 
         if (isGrounded && jumpState == 1 && !autoJumping)
             jumpState = 2;
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetButton("Jump")) {
             if (isGrounded && jumpState < 2) {
                 // Regular jump
                 // ADDITIONAL_FEATURE: The longer it's held, the higher your jump will be.
