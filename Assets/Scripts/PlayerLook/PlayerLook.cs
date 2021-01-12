@@ -31,9 +31,13 @@ public class PlayerLook : MonoBehaviour
     private Quaternion playerShoulderShadowRotation;
     private Quaternion playerSpineGlobalRotation;
     private Quaternion playerSpineShadowRotation;
+    public GameObject playerModelLocal;
+    public GameObject weapons;
+    public GameObject handgunsShadow;
+    public Transform handgunsGlobal;
     float xRotation = 0f;
     float yRotation = 0f;
-    bool aimingWeapon = true;
+    public bool aimingWeapon = true;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +71,11 @@ public class PlayerLook : MonoBehaviour
         // Applies the yRotation to the entire player.
         transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
 
+        // Weapons are only visible when aiming (partially necessary to prevent mispositions due to complications of ParticleSystem bug workaround)
+        weapons.SetActive(aimingWeapon);
+        handgunsShadow.SetActive(aimingWeapon);
+        playerModelLocal.SetActive(aimingWeapon);
+
         if (aimingWeapon) {
             //*/ Pistol aiming
                 // Applies the xRotation to the player's lower arm.
@@ -93,12 +102,15 @@ public class PlayerLook : MonoBehaviour
                 // Add LowerArm and Shadow here too
             //*/
         }
+
+        // Workaround for possible Unity bug with varying Execution Order in ParticleSystem. Particles and light would be seperated when programmatically overriding animations. Thread about this issue: https://forum.unity.com/threads/order-of-execution-of-a-particle-system.997364/
+        handgunsGlobal.rotation = playerUpperArmGlobal.rotation;
     }
 
-    void ApplyRotations()
+    private void ApplyRotations()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+        float mouseX = Input.GetAxis("Cam X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Cam Y") * mouseSensitivity;
 
         switch (mouseInvertX) {
             case true:
