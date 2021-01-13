@@ -24,7 +24,6 @@ public class PlayerShoot : MonoBehaviour
     private EnemyHealth enemyHealth;
     public PlayerLook playerLook;
 
-    // Update is called once per frame
     void LateUpdate()
     {
         if (Input.GetAxis("Fire1") > 0.5) {
@@ -67,8 +66,7 @@ public class PlayerShoot : MonoBehaviour
         //}
 
         RaycastHit[] hits = Physics.SphereCastAll(transform.position, hearingDistanceShooting, Vector3.forward, enemies);
-        for (int i = 0; i < hits.Length; i++)
-        {
+        for (int i = 0; i < hits.Length; i++) {
             RaycastHit asd = hits[i];
             Debug.Log(asd);
         }

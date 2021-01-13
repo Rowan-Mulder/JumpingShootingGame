@@ -8,13 +8,12 @@ public class EnemyColors : MonoBehaviour
 
     public new Renderer renderer;
 
-    // Start is called before the first frame update
     void Start()
     {
         RandomColor();
     }
 
-    void RandomColor()
+    private void RandomColor()
     {
         Color randomColor1 = Saturate(Random.ColorHSV());
         Color randomColor2 = Saturate(Random.ColorHSV());

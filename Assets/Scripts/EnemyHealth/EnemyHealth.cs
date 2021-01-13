@@ -10,18 +10,6 @@ public class EnemyHealth : MonoBehaviour
     public int currentHealthpoints = 10;
     public bool dead = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void UpdateHealth()
     {
         // May not be needed (yet)

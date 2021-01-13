@@ -114,7 +114,6 @@ public class PlayerMove : MonoBehaviour
         ChangeAnimationState(Animations.Idle);
     }
 
-    // Triggered every frame
     void Update()
     {
         ApplyMovements();
@@ -123,7 +122,7 @@ public class PlayerMove : MonoBehaviour
     // Draws some information to the screen for debugging purposes.
     void OnGUI()
     {
-        //*/ Only enable when absolutely required for debugging.
+        /*/ Only enable when absolutely required for debugging.
         GUIDebuggingInfo(new string[] {
             $"velocity.x: {moveX}",
             $"velocity.y: {velocity.y}",
@@ -423,9 +422,9 @@ public class PlayerMove : MonoBehaviour
             //case Animations.CrouchBackward:
             //case Animations.CrouchRight:
             //case Animations.CrouchLeft:
-            //animatorGlobal.speed = movingSpeed / crouchingSpeed;
-            //animatorLocal.speed = movingSpeed / crouchingSpeed;
-            //break;
+                //animatorGlobal.speed = movingSpeed / crouchingSpeed;
+                //animatorLocal.speed = movingSpeed / crouchingSpeed;
+                //break;
             case Animations.Idle:
                 break;
             default:

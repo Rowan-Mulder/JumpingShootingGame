@@ -55,13 +55,11 @@ public class PlayerLook : MonoBehaviour
         playerSpineShadowRotation = playerSpineShadow.localRotation;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ApplyRotations();
     }
 
-    // LateUpdate is called once per frame with lower priority than Update
     void LateUpdate()
     {
         // Applies the xRotation to the player's neckbone.

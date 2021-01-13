@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public Slider healthSlider;
     public bool dead = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         UpdateHealth();

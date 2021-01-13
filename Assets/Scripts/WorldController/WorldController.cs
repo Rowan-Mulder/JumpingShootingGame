@@ -17,7 +17,6 @@ public class WorldController : MonoBehaviour
     public LayerMask enemyCollisionMask;
     private int enemyId = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         spawnLocationsAmount = spawnLocations.Length;
@@ -25,7 +24,6 @@ public class WorldController : MonoBehaviour
         enemiesReadyToSpawn = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (enemiesReadyToSpawn && enemiesToSpawn > 0)
