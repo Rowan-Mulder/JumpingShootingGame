@@ -123,7 +123,7 @@ public class PlayerMove : MonoBehaviour
     // Draws some information to the screen for debugging purposes.
     void OnGUI()
     {
-        /*/ Only enable when absolutely required for debugging.
+        //*/ Only enable when absolutely required for debugging.
         GUIDebuggingInfo(new string[] {
             $"velocity.x: {moveX}",
             $"velocity.y: {velocity.y}",
@@ -253,8 +253,10 @@ public class PlayerMove : MonoBehaviour
             }
         } else if (isCrouching) {
             // Crouching
-            speed = crouchingSpeed;
-            //test2 = 100;
+            if (isGrounded) {
+                speed = crouchingSpeed;
+                //test2 = 100;
+            }
 
             //if (movingForwards && isGrounded)
                 //ChangeAnimationState(Animations.CrouchForward);
