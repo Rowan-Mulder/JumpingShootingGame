@@ -22,15 +22,14 @@ public class PlayerShoot : MonoBehaviour
 
     public PlayerHealth playerHealth;
     private EnemyHealth enemyHealth;
+    public PlayerLook playerLook;
 
     // Update is called once per frame
     void LateUpdate()
     {
         if (Input.GetAxis("Fire1") > 0.5) {
-            if (ammunition > 0 && readyToFire)
+            if (playerLook.aimingWeapon && ammunition > 0 && readyToFire)
                 Shoot();
-			
-            readyToFire = false;
         }
 
         if (Input.GetAxis("Fire1") == 0)
@@ -39,6 +38,8 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
+        readyToFire = false;
+
         muzzleFlashPistolCamera.Play();
         muzzleFlashPistolLocal.Play();
         muzzleFlashPistolGlobal.Play();
