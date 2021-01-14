@@ -35,11 +35,11 @@ public class PlayerLook : MonoBehaviour
     public GameObject weapons;
     public GameObject handgunsShadow;
     public Transform handgunsGlobal;
+    private Vector3 startingRotation;
     float xRotation = 0f;
     float yRotation = 0f;
     public bool aimingWeapon = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         // Lock the cursor in the center of the window
@@ -53,6 +53,7 @@ public class PlayerLook : MonoBehaviour
         playerShoulderShadowRotation = playerShoulderShadow.localRotation;
         playerSpineGlobalRotation = playerSpineGlobal.localRotation;
         playerSpineShadowRotation = playerSpineShadow.localRotation;
+        startingRotation = transform.localRotation.eulerAngles;
     }
 
     void Update()
@@ -62,12 +63,12 @@ public class PlayerLook : MonoBehaviour
 
     void LateUpdate()
     {
-        // Applies the xRotation to the player's neckbone.
-        playerNeckbone.localRotation = Quaternion.Euler(0f, 0f, xRotation);
-        playerNeckboneShadow.localRotation = Quaternion.Euler(0f, 0f, xRotation);
+        // Applies the yRotation to the player's neckbone.
+        playerNeckbone.localRotation = Quaternion.Euler(0f, 0f, yRotation);
+        playerNeckboneShadow.localRotation = Quaternion.Euler(0f, 0f, yRotation);
 
-        // Applies the yRotation to the entire player.
-        transform.localRotation = Quaternion.Euler(0f, yRotation, 0f);
+        // Applies the xRotation to the entire player.
+        transform.localRotation = Quaternion.Euler(0f, startingRotation.y + xRotation, 0f);
 
         // Weapons are only visible when aiming (partially necessary to prevent mispositions due to complications of ParticleSystem bug workaround)
         weapons.SetActive(aimingWeapon);
@@ -76,9 +77,9 @@ public class PlayerLook : MonoBehaviour
 
         if (aimingWeapon) {
             //*/ Pistol aiming
-                // Applies the xRotation to the player's lower arm.
-                playerUpperArmGlobal.localRotation = playerUpperArmGlobalRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
-                playerUpperArmShadow.localRotation = playerUpperArmShadowRotation * Quaternion.Euler(0f + xRotation, 0f, 0f);
+                // Applies the yRotation to the player's lower arm.
+                playerUpperArmGlobal.localRotation = playerUpperArmGlobalRotation * Quaternion.Euler(0f + yRotation, 0f, 0f);
+                playerUpperArmShadow.localRotation = playerUpperArmShadowRotation * Quaternion.Euler(0f + yRotation, 0f, 0f);
 
                 // Stops animating specific bodyparts for a more steady aim.
                 playerLowerArmGlobal.localRotation = playerLowerArmGlobalRotation;
@@ -90,8 +91,8 @@ public class PlayerLook : MonoBehaviour
             //*/
 
             /*/ RPG aiming (example)
-                // Applies the xRotation to the player's spine.
-                playerSpineGlobal.localRotation = playerSpineGlobalRotation * *Quaternion.Euler(0f, 0f + xRotation, 0f);
+                // Applies the yRotation to the player's spine.
+                playerSpineGlobal.localRotation = playerSpineGlobalRotation * *Quaternion.Euler(0f, 0f + yRotation, 0f);
                 // Add Shadow here too
                 
                 // Stops animating specific bodyparts for a more steady aim.
@@ -112,29 +113,29 @@ public class PlayerLook : MonoBehaviour
 
         switch (mouseInvertX) {
             case true:
-                yRotation -= mouseX;
+                xRotation -= mouseX;
                 break;
             case false:
-                yRotation += mouseX;
+                xRotation += mouseX;
                 break;
         }
 
         switch (mouseInvertY) {
             case true:
-                xRotation += mouseY;
+                yRotation += mouseY;
                 break;
             case false:
-                xRotation -= mouseY;
+                yRotation -= mouseY;
                 break;
         }
 
-        // Limits the xRotation from rotating too far.
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        // Limits the yRotation from rotating too far.
+        yRotation = Mathf.Clamp(yRotation, -90f, 90f);
 
-        // Applies the xRotation to the player's first-person camera.
-        playerFirstPersonCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // Applies the yRotation to the player's first-person camera.
+        playerFirstPersonCamera.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
 
-        // Applies the xRotation to the player's third-person camera.
-        playerThirdPersonCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        // Applies the yRotation to the player's third-person camera.
+        playerThirdPersonCamera.localRotation = Quaternion.Euler(yRotation, 0f, 0f);
     }
 }
