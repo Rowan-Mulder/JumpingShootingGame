@@ -59,16 +59,17 @@ public class PlayerShoot : MonoBehaviour
 
         // STARTED WORKING ON SHOOTING NOISE
         //     enemies will be informed from the source of the gunfire
-
-        //if (Physics.CheckSphere(transform.position, hearingDistanceShooting, enemies))
-        //{
-
-        //}
-
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position, hearingDistanceShooting, Vector3.forward, enemies);
-        for (int i = 0; i < hits.Length; i++) {
-            RaycastHit asd = hits[i];
-            Debug.Log(asd);
+        RaycastHit[] hits = Physics.SphereCastAll(playerCamera.position, hearingDistanceShooting, playerCamera.forward, 0f, enemies, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit hitz in hits)
+        {
+            // Onderstaande is een enemy. Zorg ervoor dat deze enemy nu de speler zal achtervolgen.
+            //hitz.transform.gameObject
         }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(playerCamera.position + playerCamera.forward, hearingDistanceShooting);
     }
 }
