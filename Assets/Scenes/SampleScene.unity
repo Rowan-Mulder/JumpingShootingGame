@@ -1025,7 +1025,6 @@ MonoBehaviour:
   hearingDistanceShooting: 10
   playerHealth: {fileID: 104308575}
   playerLook: {fileID: 104308571}
-  currentHitObjects: []
 --- !u!114 &104308575
 MonoBehaviour:
   m_ObjectHideFlags: 0
