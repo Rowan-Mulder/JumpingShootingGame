@@ -12,22 +12,21 @@ using UnityEngine.UIElements;
 
 public class PlayerMove : MonoBehaviour
 {
-    /// <summary>
-    /// Players may have issues jumping against walls, where the jumps jitter a bit. See: https://answers.unity.com/questions/1696314/charactercontroller-glitches-if-it-reaches-a-ledge.html
-    ///     To fix this:
-    ///         Adjust the CharacterController its "Slope Limit" to 90
-    ///         or
-    ///         Set the Step-Offset to 0.
-    /// Players may be unable to jump.
-    ///     To fix this:
-    ///         Check if isGrounded is true.
-    ///         The build-in controller.isGrounded doesn't seem to work when standing still, no solutions found on this problem as of yet.
-    /// Players may slowly increase falling speed (velocity.y) because it can't detect ground.
-    ///     To fix this:
-    ///         Make sure the GroundChecker is placed in the center of the rounded bottom of the CharacterController build-in capsule collider and then move it ever so slightly downwards
-    ///             (so it won't touch the walls, but it will touch the ground for only the first frame of a jump).
-    ///         Also make sure the given radius in the CheckSphere() then matches the radius of the CharacterController.
-    /// </summary>
+    /*  Players may have issues jumping against walls, where the jumps jitter a bit. See: https://answers.unity.com/questions/1696314/charactercontroller-glitches-if-it-reaches-a-ledge.html
+     *      To fix this:
+     *          Adjust the CharacterController its "Slope Limit" to 90
+     *          or
+     *          Set the Step-Offset to 0.
+     *  Players may be unable to jump.
+     *      To fix this:
+     *          Check if isGrounded is true.
+     *          The build-in controller.isGrounded doesn't seem to work when standing still, no solutions found on this problem as of yet.
+     *  Players may slowly increase falling speed (velocity.y) because it can't detect ground.
+     *      To fix this:
+     *          Make sure the GroundChecker is placed in the center of the rounded bottom of the CharacterController build-in capsule collider and then move it ever so slightly downwards
+     *              (so it won't touch the walls, but it will touch the ground for only the first frame of a jump). 
+     *          Also make sure the given radius in the CheckSphere() then matches the radius of the CharacterController.     
+     */
     #pragma warning disable IDE0051 // Removes warning for 'unused' methods (like Awake() and Update())
 
     public Animator animatorGlobal; // Global animations
@@ -366,7 +365,7 @@ public class PlayerMove : MonoBehaviour
         //*/
 
         // On pressing 'R', it will teleport you to the original set position
-        if (Input.GetKey(KeyCode.R))
+        if (developerMode && Input.GetKey(KeyCode.R))
             transform.position = respawnPoint;
 
         // Calculates movement speed from displacement

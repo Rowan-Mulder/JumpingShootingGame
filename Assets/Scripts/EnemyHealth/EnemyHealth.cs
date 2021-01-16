@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void Revive()
+    private void Revive()
     {
         dead = false;
         currentHealthpoints = maxHealthpoints;
