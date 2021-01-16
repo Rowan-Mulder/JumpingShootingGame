@@ -45,7 +45,7 @@ public class PlayerShoot : MonoBehaviour
 
         ammunition--;
 
-        //Shoots from playerCamera, change to weaponMuzzle for VR/third-person
+        // Shoots from playerCamera, change to weaponMuzzle for VR/third-person
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, shootingDistance, canShootAt)) {
             if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target") {
                 enemyHealth = (EnemyHealth)hit.collider.gameObject.GetComponent("EnemyHealth");
@@ -57,16 +57,20 @@ public class PlayerShoot : MonoBehaviour
             }
         }
 
-        // STARTED WORKING ON SHOOTING NOISE
-        //     enemies will be informed from the source of the gunfire
-        RaycastHit[] hits = Physics.SphereCastAll(playerCamera.position, hearingDistanceShooting, playerCamera.forward, 0f, enemies, QueryTriggerInteraction.UseGlobal);
-        foreach (RaycastHit hitz in hits)
-        {
-            // Onderstaande is een enemy. Zorg ervoor dat deze enemy nu de speler zal achtervolgen.
-            //hitz.transform.gameObject
+        InformNearbyEnemies();
+    }
+
+    private void InformNearbyEnemies()
+    {
+        // Enemies will walk towards the sound of gunfire when they're nearby enough.
+        RaycastHit[] enemiesRaycast = Physics.SphereCastAll(playerCamera.position, hearingDistanceShooting, playerCamera.forward, 0f, enemies, QueryTriggerInteraction.UseGlobal);
+        foreach (RaycastHit enemyRaycast in enemiesRaycast) {
+            ((EnemyMove)enemyRaycast.transform.gameObject.GetComponent("EnemyMove")).moveDirection = transform.position;
+            ((EnemyMove)enemyRaycast.transform.gameObject.GetComponent("EnemyMove")).followingGivenDirections = true;
         }
     }
 
+    // Draws a wireframe sphere in the scene window for debugging purposes.
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
