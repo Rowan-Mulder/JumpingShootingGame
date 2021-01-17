@@ -74,19 +74,18 @@
   - ~~Bij uncrouching (Loslaten LEFT_SHIFT), doe collision checks of je genoeg ruimte hebt om op te staan.~~
     - ~~Blijf ieder frame kijken of je genoeg ruimte hebt om op te staan tot je genoeg ruimte hebt. Zet de Character Controller height hierna weer (direct) terug.~~
 
-- [ ] **Globale Player Shadows**
+- [x] **Globale Player Shadows**
   - ~~Globale shadows werken lokaal niet omdat het globale object lokaal niet gerenderd mag worden.~~
     - ~~De oplossing was om een apart model te hebben, wat specifiek lokaal zichtbaar is, maar volledig transparant is.~~
-      - Het zou beter zijn als dit model ook de globale schaduw berekend, dan gebeurt er geen dubbel werk. Zet hiervoor schaduw uit van het globale object en verander de layer naar general voor het schaduw object.
 
-- [x] **Basis AI gebruiken/maken**
+- [ ] **Basis AI gebruiken/maken**
 - ~~Gebruik eerst de Unity AI om te kijken of dit voldoende zal zijn. (het is voldoende voor de basis)~~
 - Moeten niet spawnen in het zicht.
-- Hoort de speler en ziet de speler binnen een bepaalde radius.
-  - Gebruikt raycasts vanuit PlayerShoot.cs om te zien of de speler achter een muur zit.
-    - Zo ja, reageert het niet of minder snel op de speler. (of is afhankelijk van de afstand tussen de AI en de speler, als deze info op te halen zou zijn. Achter een paal mag de AI wel reageren, maar in een huis niet.)
-    - Zo niet, loopt het richting de speler.
-  - Bij een aantal luide geluidstriggers worden signalen gestuurd vanuit de audiosource, om alle enemies binnen een radius in te lichten van de locatie van het audiosource. Hier maakt een muur niet uit.
+- ~~Hoort de speler en ziet de speler binnen een bepaalde radius.~~
+  - ~~Gebruikt raycasts om te zien of de speler niet achter een muur zit.~~
+  - ~~Op momenten waar geluid getriggered kan worden, wordt er gekeken of de enemy dichtbij genoeg is om dit te horen.~~
+    - *Beter zou zijn als hiervoor een class aangemaakt wordt die dit afhandeld, dan copy-pasten van deze logica waar nodig.*
+  - Momenteel ziet de enemy de speler nog niet bij crouchen, dit moet onderzocht worden.
 
 - [ ] **Animaties maken**
 * ~~Idle~~
@@ -126,14 +125,18 @@
 - [ ] **Melee weapons maken**
 * Knife
 * Baseball bat
+* Axe
 * Katana
 * Guitar
 * Rubber chicken
 
-
 - [ ] **Meer animaties maken**
-* DeathFromFalling
+* JumpSprinted (heavy kickoff, stretched legs up to landing, non-looping, meant to blend into RunFallLand animation)
+* SprintFallLand (heavy impact, meant to blend into RunForwards animation)
+* LongFallLand (very heavy impact, stops movement for animation duration)
+* DeathFromFalling (pancake)
 * DeathFromBullet
+* DeathFromVoid (flailing arms around)
 
 <br><br><br>
 ---
@@ -144,6 +147,7 @@
   - Sliden van ramps, zou hierbij snelheid kunnen opbouwen.
 
 - [ ] **Decals limiteren tot een x-aantal**
+  - Kijk of je decals binnen een empty-object kan plaatsen, en hiervan het aantal kan bijhouden.
 
 - [ ] **Details toevoegen aan de playermodel, op zijn minst in het gezicht.**
 
