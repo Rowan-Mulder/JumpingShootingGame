@@ -979,7 +979,7 @@ MonoBehaviour:
   wallChecker: {fileID: 2102387368}
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 32769
   moveX: 0
   moveZ: 0
   previousFramePosition: {x: 0, y: 0, z: 0}
@@ -1022,7 +1022,7 @@ MonoBehaviour:
   enemies:
     serializedVersion: 2
     m_Bits: 32768
-  hearingDistanceShooting: 10
+  maxHearingDistanceShooting: 15
   playerHealth: {fileID: 104308575}
   playerLook: {fileID: 104308571}
 --- !u!114 &104308575
@@ -6681,6 +6681,30 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[2]
       value: 
       objectReference: {fileID: 2100000, guid: 91e1bb4845d57714287cb06037424d8c, type: 2}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.03901626
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.12209219
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.0016660988
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.111840114
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.019917302
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.15384239
+      objectReference: {fileID: 0}
     - target: {fileID: -1771888581150440991, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -7214,6 +7238,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359608243}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &375499364 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5028222271097124854, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 1956695349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &380208687 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 28e4d2a9830531341adc431cf646f31a, type: 3}
@@ -12174,6 +12203,30 @@ PrefabInstance:
     - target: {fileID: 5532621087518835811, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.100925714
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.0644559
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0.0045507587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.16534647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.06001007
+      objectReference: {fileID: 0}
+    - target: {fileID: 5532621087633188852, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.093636125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bed4e32efea37c47bc3af24e0734dbb, type: 3}
@@ -18701,6 +18754,11 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!4 &958624045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5028222271097124854, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+  m_PrefabInstance: {fileID: 301243132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -21170,6 +21228,30 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.03901626
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0.019917302
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.0016660988
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 0.12209219
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 0.15384239
+      objectReference: {fileID: 0}
+    - target: {fileID: -2827873731504850022, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 0.111840114
+      objectReference: {fileID: 0}
     - target: {fileID: -1771888581150440991, guid: 65cecc16d593afd4299c0daa92839bb5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -21365,9 +21447,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ae68ec1369155f47941c39886a9af6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: {fileID: 104308570}
+  playerLocation: {fileID: 104308570}
+  playerHead: {fileID: 958624045}
+  moveDirection: {x: 0, y: 0, z: 0}
   agent: {fileID: 1516593618}
   followingGivenDirections: 0
+  enemyHead: {fileID: 375499364}
+  maxPlayerSigthDistance: 30
 --- !u!136 &1516593621
 CapsuleCollider:
   m_ObjectHideFlags: 0
