@@ -82,17 +82,18 @@ public class PlayerMove : MonoBehaviour
     public enum Animations
     {
         Idle,
+        CrouchForward,
+        CrouchBackward,
         WalkForward,
         WalkBackward,
         WalkLeft,
         WalkRight,
         RunForward,
-        // Note when adding animations and all (or some) animations are not displayed: Save the model. Export the model to .fbx with the right settings. Add the animations, set them to the right time and loop them if required. In the animator, add new animations and make sure old animations are still linked.
         /*  To add an animation:
          *      Blender:
          *          Dope Sheet -> Action Editor
-         *              New Action
-         *          Select the first keyframe from the Idle animation just before saving
+         *              New Action (from most similar animation)
+         *          Make sure the default animation (Idle, in most cases), which will be loaded first in Unity, will alphabetically listed on top (like AAA-idle). This is a ridiculous hidden Unity feature.
          *          Save both as project and as .fbx (default export settings seem fine for now)
          *      Unity:
          *          In the Hierarchy, open the inspector of 'PlayerModel global' from the 'Player' object and press Select
@@ -256,11 +257,11 @@ public class PlayerMove : MonoBehaviour
                 //test2 = 100;
             }
 
-            //if (movingForwards && isGrounded)
-                //ChangeAnimationState(Animations.CrouchForward);
+            if (movingForwards && isGrounded)
+                ChangeAnimationState(Animations.CrouchForward);
 
-            //if (movingBackwards && isGrounded)
-                //ChangeAnimationState(Animations.CrouchBackward);
+            if (movingBackwards && isGrounded)
+                ChangeAnimationState(Animations.CrouchBackward);
         } else {
             // Walking
             speed = walkSpeed;
@@ -417,13 +418,13 @@ public class PlayerMove : MonoBehaviour
                 animatorGlobal.speed = movingSpeed / runningSpeed;
                 animatorLocal.speed = movingSpeed / runningSpeed;
                 break;
-            //case Animations.CrouchForward:
-            //case Animations.CrouchBackward:
+            case Animations.CrouchForward:
+            case Animations.CrouchBackward:
             //case Animations.CrouchRight:
             //case Animations.CrouchLeft:
-                //animatorGlobal.speed = movingSpeed / crouchingSpeed;
-                //animatorLocal.speed = movingSpeed / crouchingSpeed;
-                //break;
+                animatorGlobal.speed = movingSpeed / crouchingSpeed;
+                animatorLocal.speed = movingSpeed / crouchingSpeed;
+                break;
             case Animations.Idle:
                 break;
             default:
