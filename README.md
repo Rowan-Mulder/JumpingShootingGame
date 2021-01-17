@@ -92,6 +92,10 @@
 * Jump
 * Falling
 * Land
+* CrouchForward
+* CrouchBackward
+* CrouchLeft
+* CrouchRight
 * ~~WalkForward~~
 * ~~WalkBackward~~
 * ~~WalkLeft~~
