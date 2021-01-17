@@ -18,10 +18,9 @@ public class PlayerShoot : MonoBehaviour
     public GameObject gunDecal;
     public LayerMask canShootAt;
     public LayerMask enemies;
-    public float hearingDistanceShooting = 10f;
+    public float maxHearingDistanceShooting = 15f;
 
     public PlayerHealth playerHealth;
-    private EnemyHealth enemyHealth;
     public PlayerLook playerLook;
 
     void LateUpdate()
@@ -47,9 +46,9 @@ public class PlayerShoot : MonoBehaviour
 
         // Shoots from playerCamera, change to weaponMuzzle for VR/third-person
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, shootingDistance, canShootAt)) {
-            if (LayerMask.LayerToName(hit.collider.gameObject.layer) == "Target") {
-                enemyHealth = (EnemyHealth)hit.collider.gameObject.GetComponent("EnemyHealth");
-                enemyHealth.Damage(1);
+            if (LayerMask.LayerToName(hit.transform.gameObject.layer) == "Target") {
+                ((EnemyHealth)hit.transform.gameObject.GetComponent("EnemyHealth")).Damage(1);
+                ((EnemyMove)hit.transform.gameObject.GetComponent("EnemyMove")).moveDirection = transform.position;
             } else {
                 GameObject particle = Instantiate(gunDecal, hit.point, Quaternion.LookRotation(hit.normal));
                 particle.SetActive(true);
@@ -63,7 +62,7 @@ public class PlayerShoot : MonoBehaviour
     private void InformNearbyEnemies()
     {
         // Enemies will walk towards the sound of gunfire when they're nearby enough.
-        RaycastHit[] enemiesRaycast = Physics.SphereCastAll(playerCamera.position, hearingDistanceShooting, playerCamera.forward, 0f, enemies, QueryTriggerInteraction.UseGlobal);
+        RaycastHit[] enemiesRaycast = Physics.SphereCastAll(playerCamera.position, maxHearingDistanceShooting, playerCamera.forward, 0f, enemies, QueryTriggerInteraction.UseGlobal);
         foreach (RaycastHit enemyRaycast in enemiesRaycast) {
             ((EnemyMove)enemyRaycast.transform.gameObject.GetComponent("EnemyMove")).moveDirection = transform.position;
             ((EnemyMove)enemyRaycast.transform.gameObject.GetComponent("EnemyMove")).followingGivenDirections = true;
@@ -74,6 +73,6 @@ public class PlayerShoot : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(playerCamera.position + playerCamera.forward, hearingDistanceShooting);
+        Gizmos.DrawWireSphere(playerCamera.position + playerCamera.forward, maxHearingDistanceShooting);
     }
 }
