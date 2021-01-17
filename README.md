@@ -85,15 +85,16 @@
   - ~~Gebruikt raycasts om te zien of de speler niet achter een muur zit.~~
   - ~~Op momenten waar geluid getriggered kan worden, wordt er gekeken of de enemy dichtbij genoeg is om dit te horen.~~
     - *Beter zou zijn als hiervoor een class aangemaakt wordt die dit afhandeld, dan copy-pasten van deze logica waar nodig.*
-  - Momenteel ziet de enemy de speler nog niet bij crouchen, dit moet onderzocht worden.
+  - ~~Momenteel ziet de enemy de speler nog niet bij crouchen, dit moet onderzocht worden.~~
+    - Enemy kan speler niet goed zien vanwege crouch-animaties. Kijk of dit beter kan.
 
 - [ ] **Animaties maken**
 * ~~Idle~~
 * Jump
 * Falling
 * Land
-* CrouchForward
-* CrouchBackward
+* ~~CrouchForward~~
+* ~~CrouchBackward~~
 * CrouchLeft
 * CrouchRight
 * ~~WalkForward~~
