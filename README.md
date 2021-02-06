@@ -1,6 +1,6 @@
 # Wild West Woodworker
-*Deze game zit nog erg vroeg in zijn ontwikkelingsfase, de naam hiervan wordt duidelijk in het game design document.*
-![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/WildWestWoodworker/master/Github%20bestanden/Screenshots/Screenshot1.png)
+*Deze game zit nog erg vroeg in zijn ontwikkelingsfase, de titel hiervan wordt duidelijk in het game design document.*
+![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/WildWestWoodworker/master/Assets/Screenshots/2021-01-19.png)
 
 <br><br><br>
 ---
