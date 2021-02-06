@@ -1,14 +1,14 @@
-# JumpingShootingGame
-*Tijdelijke titel. Ik wacht nog met de titel tot de basis (MVP) rond is.*
-![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/JumpingShootingGame/master/Github%20bestanden/Screenshots/Screenshot1.png)
+# Wild West Woodworker
+*Deze game zit nog erg vroeg in zijn ontwikkelingsfase, de naam hiervan wordt duidelijk in het game design document.*
+![Screenshot vanuit Unity](https://raw.githubusercontent.com/Rowan-Mulder/WildWestWoodworker/master/Github%20bestanden/Screenshots/Screenshot1.png)
 
 <br><br><br>
 ---
 
 **Om dit project uit te breiden zijn er een aantal stappen nodig:**
-* Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---hoge-prioriteit).
-* Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---lage-prioriteit).
-* Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/JumpingShootingGame/blob/master/README.md#to-do---optioneel).
+* Sommige stappen hebben een [hoge-prioriteit](https://github.com/Rowan-Mulder/WildWestWoodworker/blob/master/README.md#to-do---hoge-prioriteit).
+* Sommige stappen hebben een [lage-prioriteit](https://github.com/Rowan-Mulder/WildWestWoodworker/blob/master/README.md#to-do---lage-prioriteit).
+* Sommige stappen zijn [optioneel](https://github.com/Rowan-Mulder/WildWestWoodworker/blob/master/README.md#to-do---optioneel).
 
 <br><br><br>
 ---
